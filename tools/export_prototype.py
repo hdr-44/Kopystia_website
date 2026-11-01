@@ -161,12 +161,49 @@ def check_links(out_dir):
     return missing
 
 
+# Desktop pages on phones: inline styles need !important to override. shortcut: matches style values these pages use; add selectors if new layouts appear.
+PHONE_CSS = '''<style>
+.m-burger{display:none;background:none;border:0;padding:10px;color:#264833;cursor:pointer}
+@media (max-width:700px){
+header[style]{padding:12px 20px!important;gap:8px!important}
+.m-burger{display:block;margin-left:auto}
+header>nav[aria-label="Main"]{display:none!important;order:9;width:100%;flex-direction:column;align-items:flex-start;gap:18px!important;padding:12px 0}
+header.open>nav[aria-label="Main"]{display:flex!important}
+header>div{order:8;width:100%}
+[style*="max-width: 1280px"],[style*="padding: 0 40px"]{padding-left:20px!important;padding-right:20px!important}
+[style*="padding: 120px"],[style*="padding: 96px"],[style*="padding: 80px"]{padding-top:56px!important;padding-bottom:56px!important}
+[style*="minmax(340px"],[style*="minmax(280px"],[style*="minmax(240px"]{grid-template-columns:1fr!important}
+[style*="gap: 64px"]{gap:32px!important}
+[style^="display: flex; gap: 20px; padding: 24px 0"]{flex-wrap:wrap!important}
+[style*="font-size: 64px"],[style*="font-size: 56px"]{font-size:40px!important}
+[style*="font-size: 48px"],[style*="font-size: 44px"]{font-size:34px!important}
+}
+</style>'''
+BURGER = ('<button type="button" class="m-burger" aria-label="Menu" aria-expanded="false" '
+          "onclick=\"this.setAttribute('aria-expanded',this.parentNode.classList.toggle('open'))\">"
+          '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">'
+          '<path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>')
+
+
+def phone_fit(html, name):
+    """Desktop page: send phones to the designed mobile twin if one exists, else add phone CSS + hamburger."""
+    stem = name[:-5]
+    twin = 'HomeMobile' if stem == 'Main' else stem + 'Mobile'
+    redirect = ''
+    if os.path.exists(os.path.join(SRC, twin + '.dc.html')):
+        redirect = f"<script>if(innerWidth<700)location.replace('{twin}'+(location.pathname.endsWith('.uk.html')?'.uk':'')+'.html'+location.hash)</script>"
+    html = html.replace('</head>', redirect + PHONE_CSS + '</head>', 1)
+    return html.replace('<nav aria-label="Main"', BURGER + '<nav aria-label="Main"', 1)
+
+
 def main():
     shutil.rmtree(OUT, ignore_errors=True)
     for path in glob.glob(os.path.join(SRC, '**', '*.dc.html'), recursive=True):
         dest = os.path.join(OUT, os.path.relpath(path, SRC).replace('.dc.html', '.html'))
         os.makedirs(os.path.dirname(dest), exist_ok=True)
         html, name = convert(path), os.path.basename(dest)
+        if 'width: 390px' not in html:  # mobile designs are already phone-sized
+            html = phone_fit(html, name)
         open(dest, 'w').write(lang_toggle(html, name, False))
         open(dest.replace('.html', '.uk.html'), 'w').write(lang_toggle(to_uk(html), name, True))
     shutil.copytree(os.path.join(SRC, 'img'), os.path.join(OUT, 'img'))

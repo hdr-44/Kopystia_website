@@ -33,7 +33,23 @@ bands: BA.map((x) => ({ ...x, on: x === b, ring: ring(x === b), pick: () => this
 
 document.addEventListener('alpine:init',()=>Alpine.data('dc',()=>{const c=new Component();return{v:c.renderVals(),init(){c.__r=()=>{this.v=c.renderVals()}}}}))</script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
-</head>
+<style>
+.m-burger{display:none;background:none;border:0;padding:10px;color:#264833;cursor:pointer}
+@media (max-width:700px){
+header[style]{padding:12px 20px!important;gap:8px!important}
+.m-burger{display:block;margin-left:auto}
+header>nav[aria-label="Main"]{display:none!important;order:9;width:100%;flex-direction:column;align-items:flex-start;gap:18px!important;padding:12px 0}
+header.open>nav[aria-label="Main"]{display:flex!important}
+header>div{order:8;width:100%}
+[style*="max-width: 1280px"],[style*="padding: 0 40px"]{padding-left:20px!important;padding-right:20px!important}
+[style*="padding: 120px"],[style*="padding: 96px"],[style*="padding: 80px"]{padding-top:56px!important;padding-bottom:56px!important}
+[style*="minmax(340px"],[style*="minmax(280px"],[style*="minmax(240px"]{grid-template-columns:1fr!important}
+[style*="gap: 64px"]{gap:32px!important}
+[style^="display: flex; gap: 20px; padding: 24px 0"]{flex-wrap:wrap!important}
+[style*="font-size: 64px"],[style*="font-size: 56px"]{font-size:40px!important}
+[style*="font-size: 48px"],[style*="font-size: 44px"]{font-size:34px!important}
+}
+</style></head>
 <body>
 <div x-data="dc">
 
