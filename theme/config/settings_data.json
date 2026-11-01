@@ -1,0 +1,15 @@
+{
+  "current": {
+    "type_primary_font": "courier_new_n4",
+    "max_page_width": "90rem",
+    "min_page_margin": 20,
+    "background_color": "#FFFFFF",
+    "foreground_color": "#000000",
+    "muted_color": "#F6F6F1",
+    "accent_color": "#2F6B3A",
+    "input_corner_radius": 0,
+    "logo_width": 160,
+    "location": "Kyiv, UA",
+    "contact": "<p>Studio<br>Street address<br>City<br>+380 00 000 0000</p>"
+  }
+}

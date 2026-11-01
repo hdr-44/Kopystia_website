@@ -1,0 +1,71 @@
+{% doc %}
+  Renders the storefront header: location/date line, search and cart
+  links, the main menu with open/filled dot markers, the logo, and the
+  contact block. Composed directly in layout/theme.liquid so it wraps
+  every page.
+
+{% enddoc %}
+
+<header class="site-header" {{ block.shopify_attributes }}>
+  <p class="site-header__meta">
+    {% if settings.location != blank %}{{ settings.location | escape }}.{% endif %}
+    {{ 'now' | date: '%a %-d %b' }}
+  </p>
+
+  <nav class="site-header__utility">
+    <a href="{{ routes.search_url }}">{{ 'header.search' | t }}</a>
+    {% if shop.customer_accounts_enabled %}
+      <shopify-account menu="{{ block.settings.customer_account_menu }}">
+        {{ 'header.account' | t }}
+      </shopify-account>
+    {% endif %}
+    <a href="{{ routes.cart_url }}">{{ 'header.cart_html' | t: count: cart.item_count }}</a>
+  </nav>
+
+  <nav class="site-header__menu">
+    {% for link in block.settings.menu.links %}
+      <a
+        href="{{ link.url }}"
+        {% if link.active or link.child_active %}
+          aria-current="page"
+        {% endif %}
+      >
+        {{- link.title | escape -}}
+      </a>
+    {% endfor %}
+  </nav>
+
+  <div class="site-header__contact rte">{{ settings.contact }}</div>
+
+  <a class="site-header__logo" href="{{ routes.root_url }}">
+    {% if settings.logo %}
+      {{
+        settings.logo
+        | image_url: width: 800
+        | image_tag: alt: shop.name, sizes: 'var(--logo-width)', width: settings.logo_width
+      }}
+    {% else %}
+      {{ shop.name | escape }}
+    {% endif %}
+  </a>
+</header>
+
+{% schema %}
+{
+  "name": "t:general.header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:labels.menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "link_list",
+      "id": "customer_account_menu",
+      "label": "t:labels.customer_account_menu",
+      "default": "customer-account-main-menu"
+    }
+  ]
+}
+{% endschema %}

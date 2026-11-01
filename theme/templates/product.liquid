@@ -1,0 +1,54 @@
+{% block 'container' %}
+  <div class="product">
+    <div class="product-images">
+      {% for image in product.images %}
+        {% render 'image', class: 'product-image', image: image, width: 1600 %}
+      {% endfor %}
+    </div>
+
+    <div class="product-info">
+      <h1>{{ product.title }}</h1>
+      <p>{{ product.price | money }}</p>
+      <div class="rte">{{ product.description }}</div>
+
+      {% form 'product', product, class: 'product-form' %}
+        {% assign current_variant = product.selected_or_first_available_variant %}
+
+        {% unless product.has_only_default_variant %}
+          <label>
+            {{ 'product.variant' | t }}
+            <select name="id">
+              {% for variant in product.variants %}
+                <option
+                  value="{{ variant.id }}"
+                  {% if variant == current_variant %}
+                    selected="selected"
+                  {% endif %}
+                  {% unless variant.available %}
+                    disabled
+                  {% endunless %}
+                >
+                  {{ variant.title }} - {{ variant.price | money }}
+                </option>
+              {% endfor %}
+            </select>
+          </label>
+        {% else %}
+          <input type="hidden" name="id" value="{{ current_variant.id }}">
+        {% endunless %}
+
+        <label>
+          {{ 'product.quantity' | t }}
+          <input type="number" name="quantity" min="1" value="1">
+        </label>
+
+        {% if current_variant.available %}
+          <button type="submit">{{ 'product.add_to_cart' | t }}</button>
+          {{ form | payment_button }}
+        {% else %}
+          <button type="submit" disabled>{{ 'product.sold_out' | t }}</button>
+        {% endif %}
+      {% endform %}
+    </div>
+  </div>
+{% endblock %}

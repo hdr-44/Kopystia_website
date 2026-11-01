@@ -1,0 +1,35 @@
+{% doc %}
+  Renders the homepage "chapters" grid: each product in the collection
+  chosen in Theme settings → Homepage becomes a tile captioned with a
+  roman numeral, e.g. "I: Intro". Tiles stay faded until hovered.
+
+{% enddoc %}
+
+{%- assign romans = 'I,II,III,IV,V,VI,VII,VIII,IX,X,XI,XII' | split: ',' -%}
+{%- assign home = settings.home_collection -%}
+
+<div class="chapters" {{ block.shopify_attributes }}>
+  {% for product in home.products limit: 12 %}
+    <a class="chapter" href="{{ product.url }}">
+      {% if product.featured_media %}
+        {{
+          product.featured_media
+          | image_url: width: 1200, height: 900, crop: 'center'
+          | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 33vw, 100vw', alt: product.title
+        }}
+      {% else %}
+        <span class="chapter__placeholder"></span>
+      {% endif %}
+      <span class="chapter__caption">{{ romans[forloop.index0] }}: {{ product.title | escape }}</span>
+    </a>
+  {% else %}
+    <p class="chapters__empty">{{ 'home.empty' | t }}</p>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "t:general.homepage",
+  "settings": []
+}
+{% endschema %}
