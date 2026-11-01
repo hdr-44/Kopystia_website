@@ -163,19 +163,28 @@ def check_links(out_dir):
 
 # Desktop pages on phones: inline styles need !important to override. shortcut: matches style values these pages use; add selectors if new layouts appear.
 PHONE_CSS = '''<style>
-.m-burger{display:none;background:none;border:0;padding:10px;color:#264833;cursor:pointer}
+.m-burger,.m-extra{display:none}
 @media (max-width:700px){
-header[style]{padding:12px 20px!important;gap:8px!important}
-.m-burger{display:block;margin-left:auto}
-header>nav[aria-label="Main"]{display:none!important;order:9;width:100%;flex-direction:column;align-items:flex-start;gap:18px!important;padding:12px 0}
+header[style]{display:grid!important;grid-template-columns:48px 1fr 48px;padding:4px!important;gap:0!important;position:relative;background:#F7F2E8}
+.m-burger{display:block;grid-column:1;grid-row:1;background:none;border:0;padding:12px;color:#264833;cursor:pointer}
+header>a:first-child{grid-column:2;grid-row:1;justify-self:center;font-size:24px!important}
+header>div{grid-column:3;grid-row:1;justify-self:end}
+header>div>:not([aria-label^="Cart"]){display:none!important}
+header>nav[aria-label="Main"]{display:none!important;position:absolute;top:100%;left:0;right:0;z-index:20;min-height:calc(100vh - 57px);box-sizing:border-box;background:#264833;padding:24px!important;flex-direction:column;gap:4px!important;text-transform:none!important;letter-spacing:0!important}
 header.open>nav[aria-label="Main"]{display:flex!important}
-header>div{order:8;width:100%}
-[style*="max-width: 1280px"],[style*="padding: 0 40px"]{padding-left:20px!important;padding-right:20px!important}
+header>nav[aria-label="Main"]>a{color:#F7F2E8;font-family:'Cormorant Garamond',serif;font-size:34px;padding:6px 0;border:0!important}
+.m-extra{display:flex;flex-direction:column;gap:20px;margin-top:24px;padding-top:24px;border-top:1px solid #3B5C46;font-family:'Manrope',system-ui,sans-serif;font-size:15px}
+.m-extra a{color:#E3CCA4}
+.m-extra div{display:flex;gap:12px}
+.m-extra div>*{border:1px solid #E3CCA4!important;padding:12px 16px!important;color:#F7F2E8!important;background:none}
+.m-extra div a{color:inherit!important}
+[style*="max-width: 1280px"],[style*="padding: 0 40px"]{padding-left:20px!important;padding-right:20px!important;box-sizing:border-box}
 [style*="padding: 120px"],[style*="padding: 96px"],[style*="padding: 80px"]{padding-top:56px!important;padding-bottom:56px!important}
 [style*="minmax(340px"],[style*="minmax(280px"],[style*="minmax(240px"]{grid-template-columns:1fr!important}
 [style*="gap: 64px"]{gap:32px!important}
 [style^="display: flex; gap: 20px; padding: 24px 0"]{flex-wrap:wrap!important}
-[style*="font-size: 64px"],[style*="font-size: 56px"]{font-size:40px!important}
+[style*="right center / auto 100%"]{background-position:center top!important;background-size:100% auto!important;padding:calc(129vw + 24px) 0 40px!important;min-height:0!important}
+[style*="font-size: 96px"],[style*="font-size: 64px"],[style*="font-size: 56px"]{font-size:44px!important}
 [style*="font-size: 48px"],[style*="font-size: 44px"]{font-size:34px!important}
 }
 </style>'''
@@ -183,6 +192,7 @@ BURGER = ('<button type="button" class="m-burger" aria-label="Menu" aria-expande
           "onclick=\"this.setAttribute('aria-expanded',this.parentNode.classList.toggle('open'))\">"
           '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">'
           '<path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>')
+EXTRA_LINKS = '<a href="Wishlist.html">Wishlist</a><a href="Help.html">Help &amp; FAQ</a><a href="Contact.html">Contact</a>'
 
 
 def phone_fit(html, name):
@@ -193,6 +203,12 @@ def phone_fit(html, name):
     if os.path.exists(os.path.join(SRC, twin + '.dc.html')):
         redirect = f"<script>if(innerWidth<700)location.replace('{twin}'+(location.pathname.endsWith('.uk.html')?'.uk':'')+'.html'+location.hash)</script>"
     html = html.replace('</head>', redirect + PHONE_CSS + '</head>', 1)
+    # phone menu matches the designed mobile one: same links plus language/currency (copied from the header bar)
+    m = re.search(r'<nav aria-label="Main".*?(</nav>)\s*<div[^>]*>(.*?)</div>\s*</header>', html, re.S)
+    if m:
+        switches = re.sub(r'(?s)<a href="Cart.html".*?</a>', '', m.group(2))
+        extra = f'<div class="m-extra">{EXTRA_LINKS}<div>{switches}</div></div>'
+        html = html[:m.start(1)] + extra + html[m.start(1):]
     return html.replace('<nav aria-label="Main"', BURGER + '<nav aria-label="Main"', 1)
 
 
