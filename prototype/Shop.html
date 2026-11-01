@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kopytsia — Shop</title>
+<script>class DCLogic{constructor(){this.props={};this.state=null}setState(p){this.state=Object.assign({},this.state,p);this.__r&&this.__r()}forceUpdate(){this.__r&&this.__r()}}
+
+class Component extends DCLogic {
+renderVals() {
+return {
+filters: ['Shape', 'Colour', 'Size', 'Price'],
+products: [{"img": "img/chornohora.jpg", "name": "Chornohora", "shape": "Wide brim", "colour": "Moss brown", "felt": "#4A4436", "price": "€145", "tag": "New"}, {"img": "img/hoverla.jpg", "name": "Hoverla", "shape": "Western", "colour": "Black, beaded band", "felt": "#1E1C1A", "price": "€160", "tag": ""}, {"img": "img/pip-ivan.jpg", "name": "Pip Ivan", "shape": "Western", "colour": "Cream, painted peaks", "felt": "#E6DCC8", "price": "€125", "tag": ""}, {"img": "img/kolomyia.jpg", "name": "Kolomyia", "shape": "Wide brim", "colour": "Black, red band", "felt": "#1E1C1A", "price": "€150", "tag": "Last one"}, {"img": "img/cheremosh.jpg", "name": "Cheremosh", "shape": "Western", "colour": "Dusty rose, distressed", "felt": "#B9727F", "price": "€130", "tag": ""}, {"img": "img/verkhovyna.jpg", "name": "Verkhovyna", "shape": "Fedora", "colour": "Black, beaded band", "felt": "#1E1C1A", "price": "€175", "tag": ""}, {"img": "img/bukovel.jpg", "name": "Bukovel", "shape": "Wide brim", "colour": "Sand, distressed", "felt": "#CDBB98", "price": "€140", "tag": ""}, {"img": "img/yaremche.jpg", "name": "Yaremche", "shape": "Fedora", "colour": "Mustard, distressed", "felt": "#C9A83A", "price": "€120", "tag": "New"}, {"img": "img/sheshory.jpg", "name": "Sheshory", "shape": "Wide brim", "colour": "Pearl grey, hand-lettered", "felt": "#CFCBC2", "price": "€155", "tag": ""}]
+};
+}
+}
+
+document.addEventListener('alpine:init',()=>Alpine.data('dc',()=>{const c=new Component();return{v:c.renderVals(),init(){c.__r=()=>{this.v=c.renderVals()}}}}))</script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body>
+<div x-data="dc">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#264833;text-decoration:none}a:hover{color:#0F2A1B}
+button,select{font:inherit}
+</style>
+
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #1F2A22; background: #F7F2E8; font-size: 16px; line-height: 1.6">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 40px; border-bottom: 1px solid #E3CCA4">
+<a href="Main.html" style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; letter-spacing: 0.18em">KOPYTSIA</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 32px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500">
+<a href="Shop.html" aria-current="page" style="border-bottom: 1px solid #264833">Shop</a>
+<a href="Custom.html">Custom hat</a>
+<a href="Hutsul.html">Hutsul life</a>
+<a href="About.html">About</a>
+<a href="Journal.html">Journal</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 4px; font-size: 13px">
+<span style="background: none; border: 0; padding: 12px 8px; color: #264833; cursor: pointer; display: inline-flex; align-items: center; gap: 4px"><a href="Shop.uk.html" lang="uk" style="color: inherit">UA</a> / <b>EN</b></span>
+<button type="button" style="background: none; border: 0; padding: 12px 8px; color: #264833; cursor: pointer">EUR €</button>
+<button type="button" aria-label="Search" style="background: none; border: 0; padding: 12px; color: #264833; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+<a href="Wishlist.html" aria-label="Wishlist" style="background: none; border: 0; padding: 12px; color: #264833; cursor: pointer; display: flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"></path></svg></a>
+<a href="Cart.html" aria-label="Cart, 0 items" style="background: none; border: 0; padding: 12px; color: #264833; cursor: pointer; display: flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg></a>
+</div>
+</header>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 72px 40px 40px">
+<p style="margin: 0 0 8px; font-size: 13px; color: #5E6B60"><a href="Main.html" style="color: #5E6B60">Home</a> / Shop</p>
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 500; line-height: 1">Hats</h1>
+<p style="margin: 16px 0 0; max-width: 560px; color: #4A5A4E">[One line about the collection: felt, made by hand, ready to ship in [X] days.]</p>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 0 40px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0; border-top: 1px solid #D6C6A6; border-bottom: 1px solid #D6C6A6">
+<div role="group" aria-label="Filters" style="display: flex; flex-wrap: wrap; gap: 8px">
+<template x-for="(f, $index) in v.filters"><div style="display: contents">
+<button type="button" style="padding: 10px 18px; min-height: 44px; border: 1px solid #264833; background: transparent; color: #264833; border-radius: 999px; cursor: pointer; font-size: 14px"><span x-text="f"></span> ▾</button>
+</div></template>
+</div>
+<label style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #4A5A4E">Sort
+<select style="padding: 10px 12px; min-height: 44px; border: 1px solid #D6C6A6; background: #FFFFFF; color: #1F2A22"><option>Newest</option><option>Price, low to high</option><option>Price, high to low</option></select>
+</label>
+</div>
+<p style="margin: 16px 0 0; font-size: 13px; color: #5E6B60">9 hats</p>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 24px 40px 96px">
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 48px 24px">
+<template x-for="(p, $index) in v.products"><div style="display: contents">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="position: relative">
+<a href="Product.html" :style="`display: flex; aspect-ratio: 4 / 5; background: ${p.felt} url(${p.img}) center / cover; align-items: flex-end; padding: 12px; font-size: 12px; color: #5A5442`"></a>
+<button type="button" aria-label="Add to wishlist" style="position: absolute; top: 4px; right: 4px; background: none; border: 0; padding: 12px; color: #264833; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"></path></svg></button>
+<template x-if="p.tag"><div style="display: contents"><span style="position: absolute; top: 12px; left: 12px; padding: 4px 10px; background: #264833; color: #F7F2E8; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase"><span x-text="p.tag"></span></span></div></template>
+</div>
+<a href="Product.html" style="display: flex; justify-content: space-between; gap: 8px; color: #1F2A22"><span style="font-family: 'Cormorant Garamond', serif; font-size: 22px"><span x-text="p.name"></span></span><span style="color: #4A5A4E"><span x-text="p.price"></span></span></a>
+<div aria-label="Available colours" style="display: flex; gap: 6px"><span style="width: 14px; height: 14px; border-radius: 50%; background: #264833"></span><span style="width: 14px; height: 14px; border-radius: 50%; background: #8A6A45"></span><span style="width: 14px; height: 14px; border-radius: 50%; background: #2A2622"></span></div>
+</div>
+</div></template>
+</div>
+</section>
+
+<section style="background: #264833; color: #F7F2E8; padding: 96px 40px">
+<div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 32px">
+<div style="max-width: 640px">
+<h2 style="margin: 0 0 12px; font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; line-height: 1.1">Didn't find your hat?</h2>
+<p style="margin: 0; color: #E3CCA4">We'll make one to your shape, colour and size.</p>
+</div>
+<a href="Custom.html" style="padding: 16px 28px; background: #E3CCA4; color: #1F2A22; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Create a custom hat</a>
+</div>
+</section>
+
+<footer style="background: #1C3626; color: #E3CCA4; padding: 80px 40px 40px; font-size: 14px">
+<div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 28px; letter-spacing: 0.18em; color: #F7F2E8">KOPYTSIA</span>
+<span>Handmade hats from the Ukrainian Carpathians</span>
+<div style="display: flex; gap: 16px"><a href="https://www.instagram.com/" style="color: #F7F2E8">Instagram</a><a href="https://www.tiktok.com/" style="color: #F7F2E8">TikTok</a><a href="https://www.facebook.com/" style="color: #F7F2E8">Facebook</a></div>
+</div>
+<nav aria-label="Shop" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Shop</b><a href="Shop.html" style="color: #E3CCA4">All hats</a><a href="Custom.html" style="color: #E3CCA4">Custom hat</a><a href="GiftCard.html" style="color: #E3CCA4">Gift card</a><a href="Wishlist.html" style="color: #E3CCA4">Wishlist</a></nav>
+<nav aria-label="Help" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Help</b><a href="Help.html#size" style="color: #E3CCA4">Size guide</a><a href="Help.html#care" style="color: #E3CCA4">Hat care</a><a href="Help.html#delivery" style="color: #E3CCA4">Delivery &amp; production times</a><a href="Help.html#returns" style="color: #E3CCA4">Returns</a><a href="Help.html#faq" style="color: #E3CCA4">FAQ</a></nav>
+<nav aria-label="Brand" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Kopytsia</b><a href="About.html" style="color: #E3CCA4">About</a><a href="Hutsul.html" style="color: #E3CCA4">Hutsul life</a><a href="Journal.html" style="color: #E3CCA4">Journal</a><a href="Contact.html" style="color: #E3CCA4">Contact</a><a href="Contact.html#collab" style="color: #E3CCA4">Collaborations</a></nav>
+</div>
+<div style="max-width: 1280px; margin: 64px auto 0; padding-top: 24px; border-top: 1px solid #3B5C46; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 12px">
+<span>© Kopytsia · <a href="Help.html#legal" style="color: #E3CCA4">Terms / Public offer</a> · <a href="Help.html#legal" style="color: #E3CCA4">Privacy</a> · <a href="Help.html#legal" style="color: #E3CCA4">Cookies</a></span>
+<span>Apple Pay · Google Pay · Visa · Mastercard</span>
+</div>
+</footer>
+</div>
+</div>
+</body>
+</html>

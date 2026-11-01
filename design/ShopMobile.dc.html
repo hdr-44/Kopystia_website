@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kopytsia — Shop, mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#264833;text-decoration:none}a:hover{color:#0F2A1B}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 390px; min-height: 2600px; font-family: 'Manrope', system-ui, sans-serif; color: #1F2A22; background: #F7F2E8; font-size: 15px; line-height: 1.6">
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 4px; border-bottom: 1px solid #E3CCA4">
+<a href="HomeMobile.dc.html" aria-label="Menu" style="padding: 12px; color: #264833; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></a>
+<a href="HomeMobile.dc.html" style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; letter-spacing: 0.18em">KOPYTSIA</a>
+<div style="display: flex">
+<button type="button" aria-label="Search" style="background: none; border: 0; padding: 12px 8px; color: #264833"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+<a href="Cart.dc.html" aria-label="Cart, 0 items" style="background: none; border: 0; padding: 12px 10px; color: #264833; display: flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg></a>
+</div>
+</header>
+
+<section style="padding: 40px 24px 24px">
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 500; line-height: 1">Hats</h1>
+<p style="margin: 12px 0 0; color: #4A5A4E">[One line about the collection]</p>
+</section>
+
+<div style="position: sticky; top: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid #D6C6A6; border-bottom: 1px solid #D6C6A6; background: #F7F2E8">
+<button type="button" style="min-height: 52px; background: none; border: 0; border-right: 1px solid #D6C6A6; color: #264833; font-size: 14px">Filter (shape, colour, size)</button>
+<button type="button" style="min-height: 52px; background: none; border: 0; color: #264833; font-size: 14px">Sort: Newest</button>
+</div>
+
+<section style="padding: 24px 16px 56px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 12px">
+<sc-for list="{{items}}" as="p" hint-placeholder-count="8">
+<div style="display: flex; flex-direction: column; gap: 6px; position: relative">
+<a href="ProductMobile.dc.html" style="display: block; aspect-ratio: 4 / 5; background: {{p.felt}} url({{p.img}}) center / cover"></a>
+<button type="button" aria-label="Add to wishlist" style="position: absolute; top: 0; right: 0; background: none; border: 0; padding: 12px; color: #264833"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"></path></svg></button>
+<a href="ProductMobile.dc.html" style="font-family: 'Cormorant Garamond', serif; font-size: 19px; color: #1F2A22; line-height: 1.2">{{p.name}}</a>
+<span style="font-size: 14px; color: #4A5A4E">{{p.price}}</span>
+</div>
+</sc-for>
+</section>
+
+<section style="background: #264833; color: #F7F2E8; padding: 56px 24px; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500">Didn't find your hat?</h2>
+<p style="margin: 0; color: #E3CCA4">We'll make one to your shape, colour and size.</p>
+<a href="CustomMobile.dc.html" style="padding: 16px; text-align: center; background: #E3CCA4; color: #1F2A22; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Create a custom hat</a>
+</section>
+
+<footer style="background: #1C3626; color: #E3CCA4; padding: 48px 24px 32px; display: flex; flex-direction: column; gap: 14px; font-size: 14px">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 26px; letter-spacing: 0.18em; color: #F7F2E8">KOPYTSIA</span>
+<a href="ShopMobile.dc.html" style="color: #E3CCA4; padding: 6px 0">Shop</a>
+<a href="CustomMobile.dc.html" style="color: #E3CCA4; padding: 6px 0">Custom hat</a>
+<a href="Help.dc.html" style="color: #E3CCA4; padding: 6px 0">Help &amp; FAQ</a>
+<a href="Contact.dc.html" style="color: #E3CCA4; padding: 6px 0">Contact</a>
+<div style="display: flex; gap: 16px"><a href="https://www.instagram.com/" style="color: #F7F2E8">Instagram</a><a href="https://www.tiktok.com/" style="color: #F7F2E8">TikTok</a><a href="https://www.facebook.com/" style="color: #F7F2E8">Facebook</a></div>
+<span style="font-size: 12px">© Kopytsia · <a href="Help.dc.html#legal" style="color: #E3CCA4">Terms · Privacy · Cookies</a></span>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2600}}'>
+class Component extends DCLogic {
+renderVals() {
+return { items: [{"img": "img/chornohora.jpg", "name": "Chornohora", "shape": "Wide brim", "colour": "Moss brown", "felt": "#4A4436", "price": "€145", "tag": "New"}, {"img": "img/hoverla.jpg", "name": "Hoverla", "shape": "Western", "colour": "Black, beaded band", "felt": "#1E1C1A", "price": "€160", "tag": ""}, {"img": "img/pip-ivan.jpg", "name": "Pip Ivan", "shape": "Western", "colour": "Cream, painted peaks", "felt": "#E6DCC8", "price": "€125", "tag": ""}, {"img": "img/kolomyia.jpg", "name": "Kolomyia", "shape": "Wide brim", "colour": "Black, red band", "felt": "#1E1C1A", "price": "€150", "tag": "Last one"}, {"img": "img/cheremosh.jpg", "name": "Cheremosh", "shape": "Western", "colour": "Dusty rose, distressed", "felt": "#B9727F", "price": "€130", "tag": ""}, {"img": "img/verkhovyna.jpg", "name": "Verkhovyna", "shape": "Fedora", "colour": "Black, beaded band", "felt": "#1E1C1A", "price": "€175", "tag": ""}, {"img": "img/bukovel.jpg", "name": "Bukovel", "shape": "Wide brim", "colour": "Sand, distressed", "felt": "#CDBB98", "price": "€140", "tag": ""}, {"img": "img/yaremche.jpg", "name": "Yaremche", "shape": "Fedora", "colour": "Mustard, distressed", "felt": "#C9A83A", "price": "€120", "tag": "New"}] };
+}
+}
+</script>
+</body>
+</html>

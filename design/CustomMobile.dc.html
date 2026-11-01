@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kopytsia — Custom hat, mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#264833;text-decoration:none}a:hover{color:#0F2A1B}
+button,input,textarea{font:inherit}
+</style>
+</helmet>
+<div style="width: 390px; min-height: 4200px; font-family: 'Manrope', system-ui, sans-serif; color: #1F2A22; background: #F7F2E8; font-size: 15px; line-height: 1.6">
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 4px; border-bottom: 1px solid #E3CCA4">
+<a href="HomeMobile.dc.html" aria-label="Menu" style="padding: 12px; color: #264833; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></a>
+<a href="HomeMobile.dc.html" style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; letter-spacing: 0.18em">KOPYTSIA</a>
+<a href="Cart.dc.html" aria-label="Cart, 0 items" style="background: none; border: 0; padding: 12px; color: #264833; display: flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg></a>
+</header>
+
+<section style="background: #264833; color: #F7F2E8">
+<div style="aspect-ratio: 1; background: #3B5C46; display: flex; align-items: flex-end; padding: 12px; font-size: 12px; color: #E3CCA4">[Photo / video: hat being shaped]</div>
+<div style="padding: 32px 24px 48px; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #E3CCA4">Custom hat</p>
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 42px; line-height: 1; font-weight: 500">A hat made for one head: yours</h1>
+<p style="margin: 0; color: #E3CCA4">From €190 · [X–Y] weeks</p>
+<a href="#form" style="padding: 16px; text-align: center; background: #E3CCA4; color: #1F2A22; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Start your request</a>
+</div>
+</section>
+
+<section style="padding: 56px 24px">
+<h2 style="margin: 0 0 24px; font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500">How it works</h2>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px">
+<sc-for list="{{how}}" as="h" hint-placeholder-count="5">
+<li style="display: flex; gap: 16px; border-top: 1px solid #264833; padding-top: 10px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #264833; width: 36px">{{h.n}}</span><span><b style="font-weight: 600">{{h.t}}</b><br><span style="color: #4A5A4E; font-size: 14px">{{h.d}}</span></span></li>
+</sc-for>
+</ol>
+</section>
+
+<section style="background: #EFE6D4; padding: 48px 0">
+<h2 style="margin: 0 0 16px; padding: 0 24px; font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 500">Made to order before</h2>
+<div style="display: flex; gap: 10px; overflow-x: auto; padding: 0 24px">
+<sc-for list="{{gallery}}" as="g" hint-placeholder-count="5">
+<button type="button" style="flex: 0 0 200px; aspect-ratio: 1; background: #DCCFB5; border: 0; font-size: 12px; color: #4A4636">[Past hat {{g}}]</button>
+</sc-for>
+</div>
+</section>
+
+<section style="background: #264833; color: #F7F2E8; padding: 40px 24px; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #E3CCA4">Hat builder</p>
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1.05; font-weight: 500">Design it in 3D, then see it on you</h2>
+<a href="tryon/ConfigMobile.dc.html" style="padding: 16px; text-align: center; background: #E3CCA4; color: #1F2A22; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Open the hat builder</a>
+<a href="tryon/TryOnMobile.dc.html" style="padding: 16px; text-align: center; border: 1px solid #E3CCA4; color: #F7F2E8; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Try on with camera</a>
+</section>
+
+<section id="form" style="padding: 56px 24px">
+<p style="margin: 0 0 6px; font-size: 13px; color: #4A5A4E">Step {{stepNo}} of 6</p>
+<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; margin-bottom: 24px">
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="6"><span style="height: 3px; background: {{b}}"></span></sc-for>
+</div>
+
+<sc-if value="{{s1}}" hint-placeholder-val="{{ true }}">
+<h2 style="margin: 0 0 16px; font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500">Choose a shape</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{shapes}}" as="sh" hint-placeholder-count="4">
+<button type="button" aria-pressed="{{sh.on}}" onClick="{{sh.pick}}" style="padding: 0 0 10px; background: #FFFFFF; display: flex; flex-direction: column; gap: 8px; font-size: 14px; border: {{sh.ring}}"><span style="display: block; width: 100%; aspect-ratio: 1; background: #E6DAC2"></span>{{sh.name}}</button>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{s2}}" hint-placeholder-val="{{ false }}">
+<h2 style="margin: 0 0 16px; font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500">Colour of felt</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<sc-for list="{{felts}}" as="f" hint-placeholder-count="6">
+<button type="button" aria-label="{{f.name}}" style="width: 56px; height: 56px; border-radius: 50%; border: 1px solid #D6C6A6; padding: 4px; background: transparent"><span style="display: block; width: 100%; height: 100%; border-radius: 50%; background: {{f.hex}}"></span></button>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{s3}}" hint-placeholder-val="{{ false }}">
+<h2 style="margin: 0 0 16px; font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500">Band &amp; details</h2>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{details}}" as="d" hint-placeholder-count="6">
+<label style="display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 14px; border: 1px solid #D6C6A6; background: #FFFFFF"><input type="checkbox">{{d}}</label>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{s4}}" hint-placeholder-val="{{ false }}">
+<h2 style="margin: 0 0 16px; font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500">Your size</h2>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px">Head circumference, cm<input type="text" placeholder="e.g. 57.5" style="min-height: 48px; padding: 0 14px; border: 1px solid #D6C6A6; background: #FFFFFF"></label>
+<div style="margin-top: 16px; aspect-ratio: 16 / 9; background: #E6DAC2; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5A5442">[Illustration: how to measure]</div>
+</sc-if>
+
+<sc-if value="{{s5}}" hint-placeholder-val="{{ false }}">
+<h2 style="margin: 0 0 16px; font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500">Inspiration</h2>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px">Tell us about the hat<textarea rows="5" style="padding: 12px; border: 1px solid #D6C6A6; background: #FFFFFF"></textarea></label>
+<button type="button" style="margin-top: 12px; width: 100%; min-height: 88px; border: 1px dashed #264833; background: transparent; color: #264833">+ Add reference photos</button>
+</sc-if>
+
+<sc-if value="{{s6}}" hint-placeholder-val="{{ false }}">
+<h2 style="margin: 0 0 16px; font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500">How can we reach you?</h2>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px">Name<input type="text" style="min-height: 48px; padding: 0 14px; border: 1px solid #D6C6A6; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px">Email<input type="email" style="min-height: 48px; padding: 0 14px; border: 1px solid #D6C6A6; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px">Phone / Telegram / WhatsApp<input type="text" style="min-height: 48px; padding: 0 14px; border: 1px solid #D6C6A6; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px">Country<input type="text" style="min-height: 48px; padding: 0 14px; border: 1px solid #D6C6A6; background: #FFFFFF"></label>
+</div>
+</sc-if>
+
+<div style="display: flex; gap: 10px; margin-top: 32px">
+<button type="button" onClick="{{back}}" style="flex: 1; min-height: 52px; border: 1px solid #264833; background: transparent; color: #264833">Back</button>
+<sc-if value="{{notLast}}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{next}}" style="flex: 2; min-height: 52px; border: 0; background: #264833; color: #F7F2E8; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px">Next</button></sc-if><sc-if value="{{s6}}" hint-placeholder-val="{{ false }}"><a href="RequestSent.dc.html" style="flex: 2; min-height: 52px; background: #264833; color: #F7F2E8; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px; display: flex; align-items: center; justify-content: center">Send request</a></sc-if>
+</div>
+</section>
+
+<section style="padding: 0 24px 56px">
+<h2 style="margin: 0 0 8px; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500">Questions</h2>
+<sc-for list="{{faq}}" as="q" hint-placeholder-count="4">
+<details style="border-bottom: 1px solid #D6C6A6; padding: 14px 0"><summary style="cursor: pointer; font-weight: 500">{{q}}</summary><p style="margin: 8px 0 0; color: #4A5A4E">[Answer]</p></details>
+</sc-for>
+</section>
+
+<footer style="background: #1C3626; color: #E3CCA4; padding: 48px 24px 32px; display: flex; flex-direction: column; gap: 14px; font-size: 14px">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 26px; letter-spacing: 0.18em; color: #F7F2E8">KOPYTSIA</span>
+<a href="ShopMobile.dc.html" style="color: #E3CCA4; padding: 6px 0">Shop</a>
+<a href="CustomMobile.dc.html" style="color: #E3CCA4; padding: 6px 0">Custom hat</a>
+<a href="Help.dc.html" style="color: #E3CCA4; padding: 6px 0">Help &amp; FAQ</a>
+<a href="Contact.dc.html" style="color: #E3CCA4; padding: 6px 0">Contact</a>
+<div style="display: flex; gap: 16px"><a href="https://www.instagram.com/" style="color: #F7F2E8">Instagram</a><a href="https://www.tiktok.com/" style="color: #F7F2E8">TikTok</a><a href="https://www.facebook.com/" style="color: #F7F2E8">Facebook</a></div>
+<span style="font-size: 12px">© Kopytsia · <a href="Help.dc.html#legal" style="color: #E3CCA4">Terms · Privacy · Cookies</a></span>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":4200}}'>
+class Component extends DCLogic {
+renderVals() {
+const st = this.state || {};
+const step = st.step || 1;
+const shape = st.shape || 'Fedora';
+return {
+stepNo: step,
+s1: step === 1, s2: step === 2, s3: step === 3, s4: step === 4, s5: step === 5, s6: step === 6,
+bars: [1,2,3,4,5,6].map((i) => (i <= step ? '#264833' : '#D6C6A6')),
+notLast: step < 6,
+next: () => this.setState({ step: Math.min(6, step + 1) }),
+back: () => this.setState({ step: Math.max(1, step - 1) }),
+how: [
+{n:'01',t:'Request',d:'Tell us your idea and size.'},
+{n:'02',t:'Consultation',d:'We confirm details, price and timing.'},
+{n:'03',t:'Invoice',d:'Pay by card, Apple Pay or Google Pay.'},
+{n:'04',t:'Crafting',d:'Made by hand, with progress photos.'},
+{n:'05',t:'Delivery',d:'Shipped in Ukraine or abroad.'}
+],
+gallery: [1,2,3,4,5],
+shapes: ['Fedora','Pork pie','Wide brim','Traditional'].map((n) => ({ name: n, on: n === shape, ring: n === shape ? '2px solid #264833' : '1px solid #D6C6A6', pick: () => this.setState({ shape: n }) })),
+felts: [{name:'Forest green',hex:'#264833'},{name:'Walnut',hex:'#8A6A45'},{name:'Charcoal',hex:'#2A2622'},{name:'Sand',hex:'#CDB98F'},{name:'Bordeaux',hex:'#6B2A2E'},{name:'Cream',hex:'#EDE3CF'}],
+details: ['Leather band','Woven Hutsul band','Ribbon','Feather','Brass pin','Embroidered initials'],
+faq: ['How much does a custom hat cost?','How long does it take?','What if it doesn’t fit?','Can I order one as a gift?']
+};
+}
+}
+</script>
+</body>
+</html>

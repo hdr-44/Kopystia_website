@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kopytsia — Journal</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#264833;text-decoration:none}a:hover{color:#0F2A1B}
+button{font:inherit}
+</style>
+</helmet>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #1F2A22; background: #F7F2E8; font-size: 16px; line-height: 1.6">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 40px; border-bottom: 1px solid #E3CCA4">
+<a href="Main.dc.html" style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; letter-spacing: 0.18em">KOPYTSIA</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 32px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500">
+<a href="Shop.dc.html">Shop</a>
+<a href="Custom.dc.html">Custom hat</a>
+<a href="Hutsul.dc.html">Hutsul life</a>
+<a href="About.dc.html">About</a>
+<a href="Journal.dc.html" aria-current="page" style="border-bottom: 1px solid #264833">Journal</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 4px; font-size: 13px">
+<button type="button" style="background: none; border: 0; padding: 12px 8px; color: #264833; cursor: pointer">UA / <b>EN</b></button>
+<button type="button" style="background: none; border: 0; padding: 12px 8px; color: #264833; cursor: pointer">EUR €</button>
+<a href="Cart.dc.html" aria-label="Cart, 0 items" style="background: none; border: 0; padding: 12px; color: #264833; cursor: pointer; display: flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg></a>
+</div>
+</header>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 72px 40px 32px">
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 500; line-height: 1">Journal</h1>
+<p style="margin: 12px 0 0; max-width: 560px; color: #4A5A4E">Stories from the Carpathians, hat guides and news from the workshop.</p>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 0 40px 72px">
+<a href="Article.dc.html" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 48px; align-items: center; color: #1F2A22">
+<div style="aspect-ratio: 4 / 3; background: #B9AE92 url(img/hutsul-1.jpg) center / cover; display: flex; align-items: flex-end; padding: 16px; font-size: 12px; color: #2F2C22"></div>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #5E6B60">Featured · Hutsul life</span>
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 52px; line-height: 1.05">[Featured article title]</span>
+<span style="color: #4A5A4E">[Two-line excerpt of the story.]</span>
+<span style="font-size: 13px; color: #5E6B60">[Date] · [N] min read</span>
+<span style="align-self: flex-start; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid #264833; color: #264833">Read the story</span>
+</div>
+</a>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 0 40px">
+<div role="tablist" aria-label="Categories" style="display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 0; border-top: 1px solid #D6C6A6; border-bottom: 1px solid #D6C6A6">
+<sc-for list="{{cats}}" as="c" hint-placeholder-count="4">
+<button type="button" role="tab" aria-selected="{{c.on}}" onClick="{{c.pick}}" style="min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid #264833; cursor: pointer; font-size: 14px; background: {{c.bg}}; color: {{c.fg}}">{{c.label}}</button>
+</sc-for>
+</div>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 40px 40px 72px">
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 56px 32px">
+<sc-for list="{{posts}}" as="p" hint-placeholder-count="9">
+<a href="Article.dc.html" style="display: flex; flex-direction: column; gap: 12px; color: #1F2A22">
+<div style="aspect-ratio: 3 / 2; background: #E6DAC2 {{p.bg}}"></div>
+<span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5E6B60">{{p.cat}}</span>
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 28px; line-height: 1.15">{{p.title}}</span>
+<span style="font-size: 13px; color: #5E6B60">[Date] · [N] min read</span>
+</a>
+</sc-for>
+</div>
+<div style="display: flex; justify-content: center; margin-top: 64px">
+<button type="button" style="min-height: 52px; padding: 0 32px; border: 1px solid #264833; background: transparent; color: #264833; cursor: pointer; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Load more</button>
+</div>
+</section>
+
+<footer style="background: #1C3626; color: #E3CCA4; padding: 80px 40px 40px; font-size: 14px">
+<div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 28px; letter-spacing: 0.18em; color: #F7F2E8">KOPYTSIA</span>
+<span>Handmade hats from the Ukrainian Carpathians</span>
+<div style="display: flex; gap: 16px"><a href="https://www.instagram.com/" style="color: #F7F2E8">Instagram</a><a href="https://www.tiktok.com/" style="color: #F7F2E8">TikTok</a><a href="https://www.facebook.com/" style="color: #F7F2E8">Facebook</a></div>
+</div>
+<nav aria-label="Shop" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Shop</b><a href="Shop.dc.html" style="color: #E3CCA4">All hats</a><a href="Custom.dc.html" style="color: #E3CCA4">Custom hat</a><a href="GiftCard.dc.html" style="color: #E3CCA4">Gift card</a><a href="Wishlist.dc.html" style="color: #E3CCA4">Wishlist</a></nav>
+<nav aria-label="Help" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Help</b><a href="Help.dc.html#size" style="color: #E3CCA4">Size guide</a><a href="Help.dc.html#care" style="color: #E3CCA4">Hat care</a><a href="Help.dc.html#delivery" style="color: #E3CCA4">Delivery &amp; production times</a><a href="Help.dc.html#returns" style="color: #E3CCA4">Returns</a><a href="Help.dc.html#faq" style="color: #E3CCA4">FAQ</a></nav>
+<nav aria-label="Brand" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Kopytsia</b><a href="About.dc.html" style="color: #E3CCA4">About</a><a href="Hutsul.dc.html" style="color: #E3CCA4">Hutsul life</a><a href="Journal.dc.html" style="color: #E3CCA4">Journal</a><a href="Contact.dc.html" style="color: #E3CCA4">Contact</a><a href="Contact.dc.html#collab" style="color: #E3CCA4">Collaborations</a></nav>
+</div>
+<div style="max-width: 1280px; margin: 64px auto 0; padding-top: 24px; border-top: 1px solid #3B5C46; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 12px">
+<span>© Kopytsia · <a href="Help.dc.html#legal" style="color: #E3CCA4">Terms / Public offer</a> · <a href="Help.dc.html#legal" style="color: #E3CCA4">Privacy</a> · <a href="Help.dc.html#legal" style="color: #E3CCA4">Cookies</a></span>
+<span>Apple Pay · Google Pay · Visa · Mastercard</span>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2600}}'>
+class Component extends DCLogic {
+renderVals() {
+const cat = (this.state && this.state.cat) || 'All';
+const all = [
+{cat:'Hutsul life',title:'[Story title]',bg:'url(img/hutsul-3.jpg) center / cover'},{cat:'Hat guides',title:'How to choose your hat size'},{cat:'Press',title:'[Publication] writes about Kopytsia'},
+{cat:'Hat guides',title:'Caring for a felt hat'},{cat:'Hutsul life',title:'[Story title]',bg:'url(img/hutsul-5.jpg) center / cover'},{cat:'Hutsul life',title:'[Story title]',bg:'url(img/hutsul-7.jpg) center / cover'},
+{cat:'Hat guides',title:'Which hat shape suits your face'},{cat:'Press',title:'[Interview title]'},{cat:'Hutsul life',title:'[Story title]',bg:'url(img/hutsul-8.jpg) center / cover'}
+];
+return {
+cats: ['All','Hutsul life','Hat guides','Press'].map((l) => ({ label: l, on: l === cat, bg: l === cat ? '#264833' : 'transparent', fg: l === cat ? '#F7F2E8' : '#264833', pick: () => this.setState({ cat: l }) })),
+posts: cat === 'All' ? all : all.filter((p) => p.cat === cat)
+};
+}
+}
+</script>
+</body>
+</html>

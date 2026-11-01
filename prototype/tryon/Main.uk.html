@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kopytsia — Конструктор капелюха</title>
+<script>class DCLogic{constructor(){this.props={};this.state=null}setState(p){this.state=Object.assign({},this.state,p);this.__r&&this.__r()}forceUpdate(){this.__r&&this.__r()}}
+
+class Component extends DCLogic {
+renderVals() {
+const st = this.state || {};
+const SH = [
+{name:'Федора', rx:150, crown:'M120 188 C118 120 130 70 200 64 C270 70 282 120 280 188 Z'},
+{name:'Порк-пай', rx:135, crown:'M126 188 C126 150 130 118 200 116 C270 118 274 150 274 188 Z'},
+{name:'Широкі поля', rx:192, crown:'M128 188 C126 130 136 90 200 86 C264 90 274 130 272 188 Z'},
+{name:'Традиційний', rx:128, crown:'M124 188 C122 110 150 40 200 40 C250 40 278 110 276 188 Z'}
+];
+const CO = [{name:'Лісовий зелений',hex:'#264833'},{name:'Горіховий',hex:'#8A6A45'},{name:'Графіт',hex:'#2A2622'},{name:'Пісочний',hex:'#CDB98F'},{name:'Бордо',hex:'#6B2A2E'},{name:'Кремовий',hex:'#EDE3CF'}];
+const BA = [{name:'Шкіряна стрічка',hex:'#5A3B24'},{name:'Ткана гуцульська стрічка',hex:'#B5412F'},{name:'Репсова стрічка',hex:'#1F2A22'},{name:'Без стрічки',hex:'transparent'}];
+const s = SH.find((x) => x.name === st.shape) || SH[0];
+const c = CO.find((x) => x.name === st.colour) || CO[0];
+const b = BA.find((x) => x.name === st.band) || BA[1];
+const ring = (on) => (on ? '2px solid #264833' : '1px solid #D6C6A6');
+return {
+shapeName: s.name, colourName: c.name, bandName: b.name,
+hex: c.hex, bandHex: b.hex, crown: s.crown, brimRx: s.rx,
+shapes: SH.map((x) => ({ ...x, on: x === s, ring: ring(x === s), pick: () => this.setState({ shape: x.name }) })),
+colours: CO.map((x) => ({ ...x, on: x === c, ring: ring(x === c), pick: () => this.setState({ colour: x.name }) })),
+bands: BA.map((x) => ({ ...x, on: x === b, ring: ring(x === b), pick: () => this.setState({ band: x.name }) }))
+};
+}
+}
+
+document.addEventListener('alpine:init',()=>Alpine.data('dc',()=>{const c=new Component();return{v:c.renderVals(),init(){c.__r=()=>{this.v=c.renderVals()}}}}))</script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body>
+<div x-data="dc">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#264833;text-decoration:none}a:hover{color:#0F2A1B}
+button{font:inherit}
+</style>
+
+<div style="width: 1440px; height: 900px; display: flex; flex-direction: column; font-family: 'Manrope', system-ui, sans-serif; color: #1F2A22; background: #F7F2E8; font-size: 15px; line-height: 1.5">
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; border-bottom: 1px solid #E3CCA4">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; letter-spacing: 0.18em; color: #264833">KOPYTSIA</span>
+<span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4A5A4E">Створіть свій капелюх</span>
+<a href="../Product.uk.html" aria-label="Закрити" style="display: flex; padding: 12px; color: #264833"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></a>
+</header>
+
+<div style="flex: 1; display: flex; min-height: 0">
+
+<section aria-label="3D-перегляд" style="flex: 1; position: relative; background: #EFE6D4; display: flex; align-items: center; justify-content: center">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+<svg width="520" height="320" viewBox="0 0 400 240" role="img" :aria-label="`Перегляд: ${v.shapeName}, ${v.colourName}, ${v.bandName}`">
+<ellipse cx="200" cy="222" rx="150" ry="10" fill="#1F2A22" opacity="0.12"></ellipse>
+<ellipse cx="200" cy="190" :rx="v.brimRx" ry="34" :fill="v.hex"></ellipse>
+<path :d="v.crown" :fill="v.hex"></path>
+<path d="M112 160 L288 160 L290 188 L110 188 Z" :fill="v.bandHex"></path>
+<path :d="v.crown" fill="#FFFFFF" opacity="0.08" transform="translate(-14 0)"></path>
+<ellipse cx="200" cy="190" :rx="v.brimRx" ry="34" fill="none" stroke="#000000" stroke-opacity="0.15"></ellipse>
+</svg>
+<span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5A5442">[Жива 3D-модель · тягніть, щоб обернути]</span>
+</div>
+
+<div role="group" aria-label="Обернути" style="position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; background: #F7F2E8; border: 1px solid #D6C6A6; border-radius: 999px; padding: 4px">
+<button type="button" aria-label="Обернути ліворуч" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: transparent; color: #264833; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></button>
+<span style="font-size: 13px; color: #4A5A4E; padding: 0 8px">360°</span>
+<button type="button" aria-label="Обернути праворуч" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: transparent; color: #264833; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg></button>
+</div>
+
+<a href="TryOn.uk.html" style="position: absolute; top: 24px; left: 24px; display: flex; align-items: center; gap: 10px; padding: 14px 20px; background: #264833; color: #F7F2E8; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>Приміряти з камерою</a>
+</section>
+
+<aside aria-label="Параметри" style="width: 440px; border-left: 1px solid #E3CCA4; display: flex; flex-direction: column">
+<div style="flex: 1; overflow: auto; padding: 32px; display: flex; flex-direction: column; gap: 32px">
+<div>
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 500; line-height: 1.05"><span x-text="v.shapeName"></span></h1>
+<p style="margin: 6px 0 0; color: #4A5A4E"><span x-text="v.colourName"></span> фетр · <span x-text="v.bandName"></span> · від [PRICE]</p>
+</div>
+
+<fieldset style="border: 0; margin: 0; padding: 0">
+<legend style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px">1 · Форма</legend>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<template x-for="(s, $index) in v.shapes"><div style="display: contents">
+<button type="button" :aria-pressed="s.on" @click="s.pick()" :style="`min-height: 88px; padding: 8px 4px; background: #FFFFFF; cursor: pointer; font-size: 12px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; border: ${s.ring}`">
+<svg width="56" height="34" viewBox="0 0 400 240" aria-hidden="true"><ellipse cx="200" cy="190" :rx="s.rx" ry="34" fill="#264833"></ellipse><path :d="s.crown" fill="#264833"></path></svg><span x-text="s.name"></span></button>
+</div></template>
+</div>
+</fieldset>
+
+<fieldset style="border: 0; margin: 0; padding: 0">
+<legend style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px">2 · Колір фетру · <span style="text-transform: none; letter-spacing: 0"><span x-text="v.colourName"></span></span></legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<template x-for="(c, $index) in v.colours"><div style="display: contents">
+<button type="button" :aria-label="c.name" :aria-pressed="c.on" @click="c.pick()" :style="`width: 48px; height: 48px; border-radius: 50%; padding: 4px; background: transparent; cursor: pointer; border: ${c.ring}`"><span :style="`display: block; width: 100%; height: 100%; border-radius: 50%; background: ${c.hex}`"></span></button>
+</div></template>
+</div>
+</fieldset>
+
+<fieldset style="border: 0; margin: 0; padding: 0">
+<legend style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px">3 · Стрічка</legend>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<template x-for="(b, $index) in v.bands"><div style="display: contents">
+<button type="button" :aria-pressed="b.on" @click="b.pick()" :style="`min-height: 52px; padding: 0 12px; background: #FFFFFF; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 10px; text-align: left; border: ${b.ring}`"><span :style="`width: 28px; height: 10px; background: ${b.hex}; border: 1px solid #D6C6A6`"></span><span x-text="b.name"></span></button>
+</div></template>
+</div>
+</fieldset>
+</div>
+
+<div style="padding: 20px 32px 28px; border-top: 1px solid #E3CCA4; display: flex; flex-direction: column; gap: 10px">
+<a href="Result.uk.html" style="min-height: 52px; display: flex; align-items: center; justify-content: center; background: #264833; color: #F7F2E8; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Замовити цей капелюх</a>
+<button type="button" style="min-height: 48px; border: 1px solid #264833; background: transparent; color: #264833; cursor: pointer; font-size: 14px">Надіслати другові</button>
+</div>
+</aside>
+</div>
+</div>
+</div>
+</body>
+</html>

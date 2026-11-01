@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kopytsia — About</title>
+<script>class DCLogic{constructor(){this.props={};this.state=null}setState(p){this.state=Object.assign({},this.state,p);this.__r&&this.__r()}forceUpdate(){this.__r&&this.__r()}}
+
+class Component extends DCLogic {
+renderVals() {
+return {
+story: ['[Year]', '[Year]', '[Year]', 'Today'],
+values: ['Handmade, slowly', 'Rooted in the Carpathians', 'Made to last'],
+press: [1, 2, 3, 4]
+};
+}
+}
+
+document.addEventListener('alpine:init',()=>Alpine.data('dc',()=>{const c=new Component();return{v:c.renderVals(),init(){c.__r=()=>{this.v=c.renderVals()}}}}))</script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body>
+<div x-data="dc">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#264833;text-decoration:none}a:hover{color:#0F2A1B}
+button{font:inherit}
+</style>
+
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #1F2A22; background: #F7F2E8; font-size: 16px; line-height: 1.7">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 40px; border-bottom: 1px solid #E3CCA4">
+<a href="Main.html" style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; letter-spacing: 0.18em">KOPYTSIA</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 32px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500">
+<a href="Shop.html">Shop</a>
+<a href="Custom.html">Custom hat</a>
+<a href="Hutsul.html">Hutsul life</a>
+<a href="About.html" aria-current="page" style="border-bottom: 1px solid #264833">About</a>
+<a href="Journal.html">Journal</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 4px; font-size: 13px">
+<span style="background: none; border: 0; padding: 12px 8px; color: #264833; cursor: pointer; display: inline-flex; align-items: center; gap: 4px"><a href="About.uk.html" lang="uk" style="color: inherit">UA</a> / <b>EN</b></span>
+<button type="button" style="background: none; border: 0; padding: 12px 8px; color: #264833; cursor: pointer">EUR €</button>
+<a href="Cart.html" aria-label="Cart, 0 items" style="background: none; border: 0; padding: 12px; color: #264833; cursor: pointer; display: flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg></a>
+</div>
+</header>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 96px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 64px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #5E6B60">About Kopytsia</p>
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 64px; line-height: 1.02; font-weight: 500">[Brand statement in one line]</h1>
+<p style="margin: 0; color: #4A5A4E; font-size: 18px">[How and why the brand started: 2–3 sentences.]</p>
+</div>
+<div style="aspect-ratio: 4 / 5; background: #CDBE9F; display: flex; align-items: flex-end; padding: 16px; font-size: 12px; color: #3E3A2C">[Portrait of the maker]</div>
+</section>
+
+<section style="background: #264833; padding: 0 40px">
+<div style="max-width: 1280px; margin: 0 auto; aspect-ratio: 16 / 7; background: #3B5C46; display: flex; align-items: center; justify-content: center; gap: 12px; color: #E3CCA4; font-size: 14px">
+<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M10 8l6 4-6 4z"></path></svg>[Workshop film, 1–2 min]
+</div>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 120px 40px">
+<h2 style="margin: 0 0 56px; font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; max-width: 640px">Our story</h2>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px">
+<template x-for="(s, $index) in v.story"><div style="display: contents">
+<li style="border-top: 1px solid #264833; padding-top: 16px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 36px; color: #264833"><span x-text="s"></span></span>
+<span style="color: #4A5A4E">[Milestone]</span>
+</li>
+</div></template>
+</ol>
+</section>
+
+<section style="background: #EFE6D4; padding: 120px 40px">
+<div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 64px; align-items: center">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="aspect-ratio: 3 / 4; background: #DCCFB5"></div>
+<div style="aspect-ratio: 3 / 4; background: #CDBE9F; margin-top: 48px"></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #5E6B60">The craft</p>
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 44px; line-height: 1.1; font-weight: 500">Materials and making</h2>
+<p style="margin: 0; color: #4A5A4E">[Felt, blocks, hand-finishing, how long one hat takes.]</p>
+</div>
+</div>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 120px 40px">
+<h2 style="margin: 0 0 48px; font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500">What we stand for</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px">
+<template x-for="(v, $index) in v.values"><div style="display: contents">
+<div style="display: flex; flex-direction: column; gap: 12px"><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500"><span x-text="v"></span></h3><p style="margin: 0; color: #4A5A4E">[Short text]</p></div>
+</div></template>
+</div>
+</section>
+
+<section style="border-top: 1px solid #D6C6A6; border-bottom: 1px solid #D6C6A6; padding: 56px 40px">
+<div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 32px">
+<span style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #5E6B60">As seen in</span>
+<template x-for="(p, $index) in v.press"><div style="display: contents">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #5E6B60">[Press logo]</span>
+</div></template>
+</div>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 96px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px">
+<div style="background: #264833; color: #F7F2E8; padding: 48px; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 500">Get in touch</h2>
+<p style="margin: 0; color: #E3CCA4">[Email] · [Phone] · [Workshop location]</p>
+<a href="Contact.html" style="align-self: flex-start; padding: 14px 24px; background: #E3CCA4; color: #1F2A22; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Contact us</a>
+</div>
+<div style="background: #EFE6D4; padding: 48px; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 500">Collaborate with us</h2>
+<p style="margin: 0; color: #4A5A4E">Brands, stylists, shoots, events.</p>
+<a href="Contact.html#collab" style="align-self: flex-start; padding: 14px 24px; background: #264833; color: #F7F2E8; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Collaboration form</a>
+</div>
+</section>
+
+<footer style="background: #1C3626; color: #E3CCA4; padding: 80px 40px 40px; font-size: 14px">
+<div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 28px; letter-spacing: 0.18em; color: #F7F2E8">KOPYTSIA</span>
+<span>Handmade hats from the Ukrainian Carpathians</span>
+<div style="display: flex; gap: 16px"><a href="https://www.instagram.com/" style="color: #F7F2E8">Instagram</a><a href="https://www.tiktok.com/" style="color: #F7F2E8">TikTok</a><a href="https://www.facebook.com/" style="color: #F7F2E8">Facebook</a></div>
+</div>
+<nav aria-label="Shop" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Shop</b><a href="Shop.html" style="color: #E3CCA4">All hats</a><a href="Custom.html" style="color: #E3CCA4">Custom hat</a><a href="GiftCard.html" style="color: #E3CCA4">Gift card</a><a href="Wishlist.html" style="color: #E3CCA4">Wishlist</a></nav>
+<nav aria-label="Help" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Help</b><a href="Help.html#size" style="color: #E3CCA4">Size guide</a><a href="Help.html#care" style="color: #E3CCA4">Hat care</a><a href="Help.html#delivery" style="color: #E3CCA4">Delivery &amp; production times</a><a href="Help.html#returns" style="color: #E3CCA4">Returns</a><a href="Help.html#faq" style="color: #E3CCA4">FAQ</a></nav>
+<nav aria-label="Brand" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Kopytsia</b><a href="About.html" style="color: #E3CCA4">About</a><a href="Hutsul.html" style="color: #E3CCA4">Hutsul life</a><a href="Journal.html" style="color: #E3CCA4">Journal</a><a href="Contact.html" style="color: #E3CCA4">Contact</a><a href="Contact.html#collab" style="color: #E3CCA4">Collaborations</a></nav>
+</div>
+<div style="max-width: 1280px; margin: 64px auto 0; padding-top: 24px; border-top: 1px solid #3B5C46; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 12px">
+<span>© Kopytsia · <a href="Help.html#legal" style="color: #E3CCA4">Terms / Public offer</a> · <a href="Help.html#legal" style="color: #E3CCA4">Privacy</a> · <a href="Help.html#legal" style="color: #E3CCA4">Cookies</a></span>
+<span>Apple Pay · Google Pay · Visa · Mastercard</span>
+</div>
+</footer>
+</div>
+</div>
+</body>
+</html>

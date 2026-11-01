@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kopytsia — Магазин</title>
+<script>class DCLogic{constructor(){this.props={};this.state=null}setState(p){this.state=Object.assign({},this.state,p);this.__r&&this.__r()}forceUpdate(){this.__r&&this.__r()}}
+
+class Component extends DCLogic {
+renderVals() {
+return {
+filters: ['Форма', 'Колір', 'Розмір', 'Ціна'],
+products: [{"img": "img/chornohora.jpg", "name": "Чорногора", "shape": "Широкі поля", "colour": "Моховий коричневий", "felt": "#4A4436", "price": "€145", "tag": "Новинка"}, {"img": "img/hoverla.jpg", "name": "Говерла", "shape": "Вестерн", "colour": "Чорний, стрічка з бісером", "felt": "#1E1C1A", "price": "€160", "tag": ""}, {"img": "img/pip-ivan.jpg", "name": "Піп Іван", "shape": "Вестерн", "colour": "Кремовий, розписані вершини", "felt": "#E6DCC8", "price": "€125", "tag": ""}, {"img": "img/kolomyia.jpg", "name": "Коломия", "shape": "Широкі поля", "colour": "Чорний, червона стрічка", "felt": "#1E1C1A", "price": "€150", "tag": "Останній"}, {"img": "img/cheremosh.jpg", "name": "Черемош", "shape": "Вестерн", "colour": "Пильно-рожевий, зістарений", "felt": "#B9727F", "price": "€130", "tag": ""}, {"img": "img/verkhovyna.jpg", "name": "Верховина", "shape": "Федора", "colour": "Чорний, стрічка з бісером", "felt": "#1E1C1A", "price": "€175", "tag": ""}, {"img": "img/bukovel.jpg", "name": "Буковель", "shape": "Широкі поля", "colour": "Пісочний, зістарений", "felt": "#CDBB98", "price": "€140", "tag": ""}, {"img": "img/yaremche.jpg", "name": "Яремче", "shape": "Федора", "colour": "Гірчичний, зістарений", "felt": "#C9A83A", "price": "€120", "tag": "Новинка"}, {"img": "img/sheshory.jpg", "name": "Шешори", "shape": "Широкі поля", "colour": "Перлинно-сірий, ручний напис", "felt": "#CFCBC2", "price": "€155", "tag": ""}]
+};
+}
+}
+
+document.addEventListener('alpine:init',()=>Alpine.data('dc',()=>{const c=new Component();return{v:c.renderVals(),init(){c.__r=()=>{this.v=c.renderVals()}}}}))</script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body>
+<div x-data="dc">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#264833;text-decoration:none}a:hover{color:#0F2A1B}
+button,select{font:inherit}
+</style>
+
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #1F2A22; background: #F7F2E8; font-size: 16px; line-height: 1.6">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 40px; border-bottom: 1px solid #E3CCA4">
+<a href="Main.uk.html" style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; letter-spacing: 0.18em">KOPYTSIA</a>
+<nav aria-label="Головне меню" style="display: flex; flex-wrap: wrap; gap: 32px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500">
+<a href="Shop.uk.html" aria-current="page" style="border-bottom: 1px solid #264833">Магазин</a>
+<a href="Custom.uk.html">Капелюх на замовлення</a>
+<a href="Hutsul.uk.html">Гуцульське життя</a>
+<a href="About.uk.html">Про нас</a>
+<a href="Journal.uk.html">Журнал</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 4px; font-size: 13px">
+<span style="background: none; border: 0; padding: 12px 8px; color: #264833; cursor: pointer; display: inline-flex; align-items: center; gap: 4px"><b>UA</b> / <a href="Shop.html" lang="en" style="color: inherit">EN</a></span>
+<button type="button" style="background: none; border: 0; padding: 12px 8px; color: #264833; cursor: pointer">EUR €</button>
+<button type="button" aria-label="Пошук" style="background: none; border: 0; padding: 12px; color: #264833; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+<a href="Wishlist.uk.html" aria-label="Обране" style="background: none; border: 0; padding: 12px; color: #264833; cursor: pointer; display: flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"></path></svg></a>
+<a href="Cart.uk.html" aria-label="Кошик, 0 товарів" style="background: none; border: 0; padding: 12px; color: #264833; cursor: pointer; display: flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg></a>
+</div>
+</header>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 72px 40px 40px">
+<p style="margin: 0 0 8px; font-size: 13px; color: #5E6B60"><a href="Main.uk.html" style="color: #5E6B60">Головна</a> / Магазин</p>
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 500; line-height: 1">Капелюхи</h1>
+<p style="margin: 16px 0 0; max-width: 560px; color: #4A5A4E">[Один рядок про колекцію: фетр, ручна робота, відправлення за [X] днів.]</p>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 0 40px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0; border-top: 1px solid #D6C6A6; border-bottom: 1px solid #D6C6A6">
+<div role="group" aria-label="Фільтри" style="display: flex; flex-wrap: wrap; gap: 8px">
+<template x-for="(f, $index) in v.filters"><div style="display: contents">
+<button type="button" style="padding: 10px 18px; min-height: 44px; border: 1px solid #264833; background: transparent; color: #264833; border-radius: 999px; cursor: pointer; font-size: 14px"><span x-text="f"></span> ▾</button>
+</div></template>
+</div>
+<label style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #4A5A4E">Сортування
+<select style="padding: 10px 12px; min-height: 44px; border: 1px solid #D6C6A6; background: #FFFFFF; color: #1F2A22"><option>Найновіші</option><option>Ціна: від низької до високої</option><option>Ціна: від високої до низької</option></select>
+</label>
+</div>
+<p style="margin: 16px 0 0; font-size: 13px; color: #5E6B60">9 капелюхів</p>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 24px 40px 96px">
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 48px 24px">
+<template x-for="(p, $index) in v.products"><div style="display: contents">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="position: relative">
+<a href="Product.uk.html" :style="`display: flex; aspect-ratio: 4 / 5; background: ${p.felt} url(${p.img}) center / cover; align-items: flex-end; padding: 12px; font-size: 12px; color: #5A5442`"></a>
+<button type="button" aria-label="Додати в обране" style="position: absolute; top: 4px; right: 4px; background: none; border: 0; padding: 12px; color: #264833; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"></path></svg></button>
+<template x-if="p.tag"><div style="display: contents"><span style="position: absolute; top: 12px; left: 12px; padding: 4px 10px; background: #264833; color: #F7F2E8; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase"><span x-text="p.tag"></span></span></div></template>
+</div>
+<a href="Product.uk.html" style="display: flex; justify-content: space-between; gap: 8px; color: #1F2A22"><span style="font-family: 'Cormorant Garamond', serif; font-size: 22px"><span x-text="p.name"></span></span><span style="color: #4A5A4E"><span x-text="p.price"></span></span></a>
+<div aria-label="Доступні кольори" style="display: flex; gap: 6px"><span style="width: 14px; height: 14px; border-radius: 50%; background: #264833"></span><span style="width: 14px; height: 14px; border-radius: 50%; background: #8A6A45"></span><span style="width: 14px; height: 14px; border-radius: 50%; background: #2A2622"></span></div>
+</div>
+</div></template>
+</div>
+</section>
+
+<section style="background: #264833; color: #F7F2E8; padding: 96px 40px">
+<div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 32px">
+<div style="max-width: 640px">
+<h2 style="margin: 0 0 12px; font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; line-height: 1.1">Не знайшли свій капелюх?</h2>
+<p style="margin: 0; color: #E3CCA4">Ми зробимо його у вашій формі, кольорі та розмірі.</p>
+</div>
+<a href="Custom.uk.html" style="padding: 16px 28px; background: #E3CCA4; color: #1F2A22; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Створити капелюх на замовлення</a>
+</div>
+</section>
+
+<footer style="background: #1C3626; color: #E3CCA4; padding: 80px 40px 40px; font-size: 14px">
+<div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 28px; letter-spacing: 0.18em; color: #F7F2E8">KOPYTSIA</span>
+<span>Капелюхи ручної роботи з українських Карпат</span>
+<div style="display: flex; gap: 16px"><a href="https://www.instagram.com/" style="color: #F7F2E8">Instagram</a><a href="https://www.tiktok.com/" style="color: #F7F2E8">TikTok</a><a href="https://www.facebook.com/" style="color: #F7F2E8">Facebook</a></div>
+</div>
+<nav aria-label="Магазин" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Магазин</b><a href="Shop.uk.html" style="color: #E3CCA4">Усі капелюхи</a><a href="Custom.uk.html" style="color: #E3CCA4">Капелюх на замовлення</a><a href="GiftCard.uk.html" style="color: #E3CCA4">Подарунковий сертифікат</a><a href="Wishlist.uk.html" style="color: #E3CCA4">Обране</a></nav>
+<nav aria-label="Допомога" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Допомога</b><a href="Help.uk.html#size" style="color: #E3CCA4">Таблиця розмірів</a><a href="Help.uk.html#care" style="color: #E3CCA4">Догляд за капелюхом</a><a href="Help.uk.html#delivery" style="color: #E3CCA4">Доставка та терміни виготовлення</a><a href="Help.uk.html#returns" style="color: #E3CCA4">Повернення</a><a href="Help.uk.html#faq" style="color: #E3CCA4">Часті питання</a></nav>
+<nav aria-label="Бренд" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Kopytsia</b><a href="About.uk.html" style="color: #E3CCA4">Про нас</a><a href="Hutsul.uk.html" style="color: #E3CCA4">Гуцульське життя</a><a href="Journal.uk.html" style="color: #E3CCA4">Журнал</a><a href="Contact.uk.html" style="color: #E3CCA4">Контакти</a><a href="Contact.uk.html#collab" style="color: #E3CCA4">Співпраця</a></nav>
+</div>
+<div style="max-width: 1280px; margin: 64px auto 0; padding-top: 24px; border-top: 1px solid #3B5C46; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 12px">
+<span>© Kopytsia · <a href="Help.uk.html#legal" style="color: #E3CCA4">Умови / Публічна оферта</a> · <a href="Help.uk.html#legal" style="color: #E3CCA4">Конфіденційність</a> · <a href="Help.uk.html#legal" style="color: #E3CCA4">Файли cookie</a></span>
+<span>Apple Pay · Google Pay · Visa · Mastercard</span>
+</div>
+</footer>
+</div>
+</div>
+</body>
+</html>

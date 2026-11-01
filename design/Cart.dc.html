@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kopytsia — Cart</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#264833;text-decoration:none}a:hover{color:#0F2A1B}
+button,input,textarea,select{font:inherit}
+@media (max-width: 700px){nav[aria-label="Main"]{display:none}}
+</style>
+</helmet>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #1F2A22; background: #F7F2E8; font-size: 16px; line-height: 1.6">
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 40px; border-bottom: 1px solid #E3CCA4">
+<a href="Main.dc.html" style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; letter-spacing: 0.18em">KOPYTSIA</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 32px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500">
+<a href="Shop.dc.html">Shop</a>
+<a href="Custom.dc.html">Custom hat</a>
+<a href="Hutsul.dc.html">Hutsul life</a>
+<a href="About.dc.html">About</a>
+<a href="Journal.dc.html">Journal</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 4px; font-size: 13px">
+<button type="button" style="background: none; border: 0; padding: 12px 8px; color: #264833; cursor: pointer">UA / <b>EN</b></button>
+<button type="button" style="background: none; border: 0; padding: 12px 8px; color: #264833; cursor: pointer">EUR €</button>
+<button type="button" aria-label="Search" style="background: none; border: 0; padding: 12px; color: #264833; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+<a href="Wishlist.dc.html" aria-label="Wishlist" style="background: none; border: 0; padding: 12px; color: #264833; cursor: pointer; display: flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"></path></svg></a>
+<a href="Cart.dc.html" aria-label="Cart, 0 items" style="background: none; border: 0; padding: 12px; color: #264833; cursor: pointer; display: flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg></a>
+</div>
+</header>
+<section style="max-width: 1120px; margin: 0 auto; padding: 64px 24px 96px">
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 500; line-height: 1.05">Your cart</h1>
+<div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start; margin-top: 32px">
+<div style="flex: 999 1 520px; min-width: 0; border-top: 1px solid #D6C6A6"><div style="display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid #D6C6A6">
+<a href="Product.dc.html" style="flex: 0 0 120px; height: 150px; background: #4A4436 url(img/chornohora.jpg) center / cover"></a>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 6px">
+<a href="Product.dc.html" style="font-family: 'Cormorant Garamond', serif; font-size: 24px; color: #1F2A22">Chornohora</a>
+<span style="font-size: 14px; color: #4A5A4E">Moss brown · Size 57</span>
+<div style="display: flex; align-items: center; gap: 16px; margin-top: auto">
+<div style="display: flex; align-items: center; border: 1px solid #D6C6A6"><button type="button" aria-label="Decrease quantity" style="width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer">−</button><span style="width: 32px; text-align: center">1</span><button type="button" aria-label="Increase quantity" style="width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer">+</button></div>
+<button type="button" style="background: none; border: 0; padding: 12px 0; color: #4A5A4E; text-decoration: underline; cursor: pointer; font-size: 14px">Remove</button>
+</div>
+</div>
+<span>€145</span>
+</div><div style="display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid #D6C6A6">
+<a href="Product.dc.html" style="flex: 0 0 120px; height: 150px; background: #1E1C1A url(img/hoverla.jpg) center / cover"></a>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 6px">
+<a href="Product.dc.html" style="font-family: 'Cormorant Garamond', serif; font-size: 24px; color: #1F2A22">Hoverla</a>
+<span style="font-size: 14px; color: #4A5A4E">Black · Size 58</span>
+<div style="display: flex; align-items: center; gap: 16px; margin-top: auto">
+<div style="display: flex; align-items: center; border: 1px solid #D6C6A6"><button type="button" aria-label="Decrease quantity" style="width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer">−</button><span style="width: 32px; text-align: center">1</span><button type="button" aria-label="Increase quantity" style="width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer">+</button></div>
+<button type="button" style="background: none; border: 0; padding: 12px 0; color: #4A5A4E; text-decoration: underline; cursor: pointer; font-size: 14px">Remove</button>
+</div>
+</div>
+<span>€160</span>
+</div>
+<a href="Shop.dc.html" style="display: inline-block; margin-top: 24px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid #264833">Continue shopping</a>
+</div>
+<aside aria-label="Order summary" style="flex: 1 1 300px; background: #FFFFFF; border: 1px solid #E3CCA4; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between"><span>Subtotal</span><b style="font-weight: 600">€305</b></div>
+<span style="font-size: 13px; color: #4A5A4E">Shipping and taxes calculated at checkout. Prices shown in EUR.</span>
+<a href="Checkout.dc.html" style="min-height: 52px; padding: 0 24px; display: flex; align-items: center; justify-content: center; background: #264833; color: #F7F2E8; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Checkout</a>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<a href="Checkout.dc.html" style="min-height: 48px; display: flex; align-items: center; justify-content: center; background: #1F2A22; color: #FFFFFF; font-size: 14px">Apple Pay</a>
+<a href="Checkout.dc.html" style="min-height: 48px; display: flex; align-items: center; justify-content: center; border: 1px solid #1F2A22; color: #1F2A22; font-size: 14px">Google Pay</a>
+</div>
+<a href="GiftCard.dc.html" style="font-size: 14px; border-bottom: 1px solid #264833; align-self: flex-start">Add a gift card</a>
+</aside>
+</div>
+</section>
+<footer style="background: #1C3626; color: #E3CCA4; padding: 80px 40px 40px; font-size: 14px">
+<div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 28px; letter-spacing: 0.18em; color: #F7F2E8">KOPYTSIA</span>
+<span>Handmade hats from the Ukrainian Carpathians</span>
+<div style="display: flex; gap: 16px"><a href="https://www.instagram.com/" style="color: #F7F2E8">Instagram</a><a href="https://www.tiktok.com/" style="color: #F7F2E8">TikTok</a><a href="https://www.facebook.com/" style="color: #F7F2E8">Facebook</a></div>
+</div>
+<nav aria-label="Shop" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Shop</b><a href="Shop.dc.html" style="color: #E3CCA4">All hats</a><a href="Custom.dc.html" style="color: #E3CCA4">Custom hat</a><a href="GiftCard.dc.html" style="color: #E3CCA4">Gift card</a><a href="Wishlist.dc.html" style="color: #E3CCA4">Wishlist</a></nav>
+<nav aria-label="Help" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Help</b><a href="Help.dc.html#size" style="color: #E3CCA4">Size guide</a><a href="Help.dc.html#care" style="color: #E3CCA4">Hat care</a><a href="Help.dc.html#delivery" style="color: #E3CCA4">Delivery &amp; production times</a><a href="Help.dc.html#returns" style="color: #E3CCA4">Returns</a><a href="Help.dc.html#faq" style="color: #E3CCA4">FAQ</a></nav>
+<nav aria-label="Brand" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Kopytsia</b><a href="About.dc.html" style="color: #E3CCA4">About</a><a href="Hutsul.dc.html" style="color: #E3CCA4">Hutsul life</a><a href="Journal.dc.html" style="color: #E3CCA4">Journal</a><a href="Contact.dc.html" style="color: #E3CCA4">Contact</a><a href="Contact.dc.html#collab" style="color: #E3CCA4">Collaborations</a></nav>
+</div>
+<div style="max-width: 1280px; margin: 64px auto 0; padding-top: 24px; border-top: 1px solid #3B5C46; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 12px">
+<span>© Kopytsia · <a href="Help.dc.html#legal" style="color: #E3CCA4">Terms / Public offer</a> · <a href="Help.dc.html#legal" style="color: #E3CCA4">Privacy</a> · <a href="Help.dc.html#legal" style="color: #E3CCA4">Cookies</a></span>
+<span>Apple Pay · Google Pay · Visa · Mastercard</span>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1400}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kopytsia — Примірка наживо, мобільна</title>
+<script>class DCLogic{constructor(){this.props={};this.state=null}setState(p){this.state=Object.assign({},this.state,p);this.__r&&this.__r()}forceUpdate(){this.__r&&this.__r()}}
+
+class Component extends DCLogic {
+renderVals() {
+const st = this.state || {};
+const tab = st.tab || 'Колір';
+const SH = [
+{name:'Федора', rx:150, crown:'M120 188 C118 120 130 70 200 64 C270 70 282 120 280 188 Z'},
+{name:'Порк-пай', rx:135, crown:'M126 188 C126 150 130 118 200 116 C270 118 274 150 274 188 Z'},
+{name:'Широкі поля', rx:192, crown:'M128 188 C126 130 136 90 200 86 C264 90 274 130 272 188 Z'},
+{name:'Традиційний', rx:128, crown:'M124 188 C122 110 150 40 200 40 C250 40 278 110 276 188 Z'}
+];
+const CO = [{name:'Лісовий зелений',hex:'#264833'},{name:'Горіховий',hex:'#8A6A45'},{name:'Графіт',hex:'#2A2622'},{name:'Пісочний',hex:'#CDB98F'},{name:'Бордо',hex:'#6B2A2E'},{name:'Кремовий',hex:'#EDE3CF'}];
+const BA = [{name:'Шкіряна стрічка',hex:'#5A3B24'},{name:'Ткана гуцульська стрічка',hex:'#B5412F'},{name:'Репсова стрічка',hex:'#1F2A22'},{name:'Без стрічки',hex:'transparent'}];
+const s = SH.find((x) => x.name === st.shape) || SH[0];
+const c = CO.find((x) => x.name === st.colour) || CO[1];
+const b = BA.find((x) => x.name === st.band) || BA[1];
+const ring = (on) => (on ? '2px solid #264833' : '1px solid #D6C6A6');
+return {
+shapeName: s.name, colourName: c.name,
+hex: c.hex, bandHex: b.hex, crown: s.crown, brimRx: s.rx,
+tabShape: tab === 'Форма', tabColour: tab === 'Колір', tabBand: tab === 'Стрічка',
+tabs: ['Форма','Колір','Стрічка'].map((l) => ({ label: l, on: l === tab, line: l === tab ? '2px solid #264833' : '2px solid transparent', pick: () => this.setState({ tab: l }) })),
+shapes: SH.map((x) => ({ ...x, on: x === s, ring: ring(x === s), pick: () => this.setState({ shape: x.name }) })),
+colours: CO.map((x) => ({ ...x, on: x === c, ring: ring(x === c), pick: () => this.setState({ colour: x.name }) })),
+bands: BA.map((x) => ({ ...x, on: x === b, ring: ring(x === b), pick: () => this.setState({ band: x.name }) }))
+};
+}
+}
+
+document.addEventListener('alpine:init',()=>Alpine.data('dc',()=>{const c=new Component();return{v:c.renderVals(),init(){c.__r=()=>{this.v=c.renderVals()}}}}))</script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body>
+<div x-data="dc">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#264833;text-decoration:none}a:hover{color:#0F2A1B}
+button{font:inherit}
+</style>
+
+<div style="width: 390px; height: 844px; position: relative; font-family: 'Manrope', system-ui, sans-serif; color: #1F2A22; background: #2B2E28; font-size: 15px; line-height: 1.5; overflow: hidden">
+
+<svg width="390" height="600" viewBox="0 0 620 760" role="img" :aria-label="`Зображення з камери: ${v.shapeName}, ${v.colourName}, на голові`" style="position: absolute; top: 40px; left: 0">
+<path d="M40 760 C70 600 190 560 310 560 C430 560 550 600 580 760 Z" fill="#4A4C43"></path>
+<rect x="268" y="470" width="84" height="110" rx="30" fill="#5A5C52"></rect>
+<ellipse cx="310" cy="370" rx="130" ry="165" fill="#6A6C61"></ellipse>
+<g transform="translate(110 100)">
+<ellipse cx="200" cy="190" :rx="v.brimRx" ry="34" :fill="v.hex"></ellipse>
+<path :d="v.crown" :fill="v.hex"></path>
+<path d="M112 160 L288 160 L290 188 L110 188 Z" :fill="v.bandHex"></path>
+<ellipse cx="200" cy="190" :rx="v.brimRx" ry="34" fill="none" stroke="#000000" stroke-opacity="0.2"></ellipse>
+</g>
+</svg>
+
+<div style="position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; padding: 4px">
+<a href="ConfigMobile.uk.html" aria-label="Назад до 3D-вигляду" style="display: flex; padding: 12px; color: #F7F2E8"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+<span style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(247,242,232,0.92); font-size: 12px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Залишається на вашому телефоні</span>
+<button type="button" aria-label="Перемкнути камеру" style="background: none; border: 0; padding: 12px; color: #F7F2E8"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2"></path><path d="M20 5v4h-4M4 19v-4h4"></path></svg></button>
+</div>
+
+<a href="ResultMobile.uk.html" aria-label="Зробити фото" style="position: absolute; left: 50%; bottom: 266px; transform: translateX(-50%); width: 72px; height: 72px; border-radius: 50%; border: 4px solid #F7F2E8; display: flex; align-items: center; justify-content: center"><span style="width: 54px; height: 54px; border-radius: 50%; background: #F7F2E8"></span></a>
+
+<section aria-label="Параметри" style="position: absolute; left: 0; right: 0; bottom: 0; background: #F7F2E8; border-radius: 20px 20px 0 0; padding: 10px 20px 20px; display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #D6C6A6"></span>
+<div role="tablist" aria-label="Групи параметрів" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid #D6C6A6">
+<template x-for="(t, $index) in v.tabs"><div style="display: contents">
+<button type="button" role="tab" :aria-selected="t.on" @click="t.pick()" :style="`min-height: 44px; background: none; border: 0; border-bottom: ${t.line}; color: #264833; font-size: 14px; cursor: pointer`"><span x-text="t.label"></span></button>
+</div></template>
+</div>
+<div style="min-height: 56px; display: flex; gap: 8px; overflow-x: auto; align-items: center">
+<template x-if="v.tabShape"><div style="display: contents">
+<template x-for="(s, $index) in v.shapes"><div style="display: contents">
+<button type="button" :aria-pressed="s.on" @click="s.pick()" :style="`flex: 0 0 auto; min-height: 48px; padding: 0 14px; background: #FFFFFF; font-size: 13px; border: ${s.ring}`"><span x-text="s.name"></span></button>
+</div></template>
+</div></template>
+<template x-if="v.tabColour"><div style="display: contents">
+<template x-for="(c, $index) in v.colours"><div style="display: contents">
+<button type="button" :aria-label="c.name" :aria-pressed="c.on" @click="c.pick()" :style="`flex: 0 0 48px; width: 48px; height: 48px; border-radius: 50%; padding: 4px; background: transparent; border: ${c.ring}`"><span :style="`display: block; width: 100%; height: 100%; border-radius: 50%; background: ${c.hex}`"></span></button>
+</div></template>
+</div></template>
+<template x-if="v.tabBand"><div style="display: contents">
+<template x-for="(b, $index) in v.bands"><div style="display: contents">
+<button type="button" :aria-pressed="b.on" @click="b.pick()" :style="`flex: 0 0 auto; min-height: 48px; padding: 0 12px; background: #FFFFFF; font-size: 13px; display: flex; align-items: center; gap: 8px; border: ${b.ring}`"><span :style="`width: 22px; height: 8px; background: ${b.hex}; border: 1px solid #D6C6A6`"></span><span x-text="b.name"></span></button>
+</div></template>
+</div></template>
+</div>
+<a href="ResultMobile.uk.html" style="min-height: 52px; display: flex; align-items: center; justify-content: center; background: #264833; color: #F7F2E8; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Замовити цей капелюх</a>
+</section>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kopytsia — Journal article, mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#264833;text-decoration:none}a:hover{color:#0F2A1B}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 390px; min-height: 4000px; font-family: 'Manrope', system-ui, sans-serif; color: #1F2A22; background: #F7F2E8; font-size: 17px; line-height: 1.7">
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 4px; border-bottom: 1px solid #E3CCA4">
+<a href="JournalMobile.dc.html" aria-label="Back to Journal" style="padding: 12px; color: #264833; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+<a href="HomeMobile.dc.html" style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; letter-spacing: 0.18em">KOPYTSIA</a>
+<a href="Cart.dc.html" aria-label="Cart, 0 items" style="background: none; border: 0; padding: 12px; color: #264833; display: flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg></a>
+</header>
+
+<section style="padding: 40px 24px 28px">
+<p style="margin: 0 0 12px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #5E6B60">Hutsul life</p>
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 42px; line-height: 1.05; font-weight: 500">[Article title]</h1>
+<p style="margin: 16px 0 0; color: #4A5A4E">[Standfirst: one or two sentences.]</p>
+<p style="margin: 12px 0 0; font-size: 13px; color: #5E6B60">By [Author] · [Date] · [N] min read</p>
+</section>
+
+<div style="aspect-ratio: 4 / 3; background: #B9AE92 url(img/hutsul-2.jpg) center / cover"></div>
+
+<article style="padding: 40px 24px">
+<p style="margin: 0 0 20px">[Body paragraph.]</p>
+<p style="margin: 0 0 20px">[Body paragraph.]</p>
+<h2 style="margin: 36px 0 12px; font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 500">[Subheading]</h2>
+<p style="margin: 0 0 20px">[Body paragraph.]</p>
+<figure style="margin: 32px -24px">
+<div style="aspect-ratio: 3 / 2; background: #DCCFB5 url(img/hutsul-5.jpg) center / cover"></div>
+<figcaption style="margin: 8px 24px 0; font-size: 13px; color: #5E6B60">[Caption]</figcaption>
+</figure>
+<blockquote style="margin: 32px 0; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 28px; line-height: 1.3; color: #264833">“[Pull quote]”</blockquote>
+<p style="margin: 0">[Body paragraph.]</p>
+</article>
+
+<section style="background: #EFE6D4; padding: 40px 0">
+<h2 style="margin: 0 0 16px; padding: 0 24px; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500">Hats in this story</h2>
+<div style="display: flex; gap: 12px; overflow-x: auto; padding: 0 24px">
+<sc-for list="{{items}}" as="h" hint-placeholder-count="3">
+<a href="ProductMobile.dc.html" style="flex: 0 0 200px; display: flex; flex-direction: column; gap: 6px; color: #1F2A22"><div style="aspect-ratio: 4 / 5; background: {{h.felt}} url({{h.img}}) center / cover"></div><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px">{{h.name}}</span><span style="font-size: 14px; color: #4A5A4E">{{h.price}}</span></a>
+</sc-for>
+</div>
+</section>
+
+<section style="padding: 48px 24px">
+<h2 style="margin: 0 0 12px; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500">Keep reading</h2>
+<sc-for list="{{items}}" as="r" hint-placeholder-count="3">
+<a href="ArticleMobile.dc.html" style="display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid #D6C6A6; color: #1F2A22"><div style="flex: 0 0 96px; height: 72px; background: #E6DAC2"></div><span style="font-family: 'Cormorant Garamond', serif; font-size: 20px; line-height: 1.2">[Article title]</span></a>
+</sc-for>
+</section>
+
+<footer style="background: #1C3626; color: #E3CCA4; padding: 48px 24px 32px; display: flex; flex-direction: column; gap: 14px; font-size: 14px">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 26px; letter-spacing: 0.18em; color: #F7F2E8">KOPYTSIA</span>
+<a href="ShopMobile.dc.html" style="color: #E3CCA4; padding: 6px 0">Shop</a>
+<a href="CustomMobile.dc.html" style="color: #E3CCA4; padding: 6px 0">Custom hat</a>
+<a href="Help.dc.html" style="color: #E3CCA4; padding: 6px 0">Help &amp; FAQ</a>
+<a href="Contact.dc.html" style="color: #E3CCA4; padding: 6px 0">Contact</a>
+<div style="display: flex; gap: 16px"><a href="https://www.instagram.com/" style="color: #F7F2E8">Instagram</a><a href="https://www.tiktok.com/" style="color: #F7F2E8">TikTok</a><a href="https://www.facebook.com/" style="color: #F7F2E8">Facebook</a></div>
+<span style="font-size: 12px">© Kopytsia · <a href="Help.dc.html#legal" style="color: #E3CCA4">Terms · Privacy · Cookies</a></span>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":4000}}'>
+class Component extends DCLogic {
+renderVals() {
+return { items: [{"img": "img/verkhovyna.jpg", "name": "Verkhovyna", "shape": "Fedora", "colour": "Black, beaded band", "felt": "#1E1C1A", "price": "€175", "tag": ""}, {"img": "img/chornohora.jpg", "name": "Chornohora", "shape": "Wide brim", "colour": "Moss brown", "felt": "#4A4436", "price": "€145", "tag": "New"}, {"img": "img/kolomyia.jpg", "name": "Kolomyia", "shape": "Wide brim", "colour": "Black, red band", "felt": "#1E1C1A", "price": "€150", "tag": "Last one"}] };
+}
+}
+</script>
+</body>
+</html>

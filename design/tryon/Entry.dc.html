@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kopytsia — Try-on entry points</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#264833;text-decoration:none}a:hover{color:#0F2A1B}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; box-sizing: border-box; padding: 56px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; font-family: 'Manrope', system-ui, sans-serif; color: #1F2A22; background: #E9E2D3; font-size: 15px; line-height: 1.5">
+
+<section aria-label="Product page entry" style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4A5A4E">A · Product page</h2>
+<div style="flex: 1; background: #F7F2E8; padding: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px">
+<div style="position: relative; background: #E6DAC2; display: flex; align-items: flex-end; padding: 12px; font-size: 12px; color: #5A5442">[Product gallery]
+<a href="TryOn.dc.html" style="position: absolute; top: 16px; left: 16px; display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: #264833; color: #F7F2E8; font-size: 13px">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>Try it on</a>
+<a href="Main.dc.html" style="position: absolute; top: 16px; right: 16px; padding: 12px 14px; background: #F7F2E8; font-size: 13px; border: 1px solid #264833">3D</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1">[Hat name]</span>
+<span>[PRICE]</span>
+<div style="height: 44px; background: #EFE6D4"></div>
+<div style="height: 44px; background: #EFE6D4"></div>
+<span style="min-height: 52px; display: flex; align-items: center; justify-content: center; background: #264833; color: #F7F2E8; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Add to cart</span>
+<a href="TryOn.dc.html" style="min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid #264833; font-size: 14px">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>See it on you</a>
+<span style="font-size: 13px; color: #4A5A4E">Opens the try-on with this shape and colour preselected.</span>
+</div>
+</div>
+</section>
+
+<section aria-label="Custom hat page entry" style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4A5A4E">B · Custom hat page (replaces the reserved phase-2 box)</h2>
+<div style="flex: 1; background: #264833; color: #F7F2E8; padding: 48px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #E3CCA4">New · Hat builder</p>
+<h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 52px; line-height: 1.05; font-weight: 500">Design it in 3D, then see it on you</h3>
+<p style="margin: 0; color: #E3CCA4; max-width: 460px">Pick a shape, felt colour and band. Turn on your camera to try it on, then send us the request in one tap.</p>
+</div>
+<div style="flex: 1; min-height: 240px; background: #3B5C46; display: flex; align-items: center; justify-content: center">
+<svg width="280" height="170" viewBox="0 0 400 240" role="img" aria-label="Rotating 3D hat preview"><ellipse cx="200" cy="190" rx="150" ry="34" fill="#E3CCA4"></ellipse><path d="M120 188 C118 120 130 70 200 64 C270 70 282 120 280 188 Z" fill="#E3CCA4"></path><path d="M112 160 L288 160 L290 188 L110 188 Z" fill="#B5412F"></path></svg>
+</div>
+<div style="display: flex; gap: 12px">
+<a href="Main.dc.html" style="padding: 16px 24px; background: #E3CCA4; color: #1F2A22; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Open the hat builder</a>
+<a href="TryOn.dc.html" style="padding: 16px 24px; border: 1px solid #E3CCA4; color: #F7F2E8; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Try on with camera</a>
+</div>
+</div>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kopytsia — Конструктор капелюха, мобільна</title>
+<script>class DCLogic{constructor(){this.props={};this.state=null}setState(p){this.state=Object.assign({},this.state,p);this.__r&&this.__r()}forceUpdate(){this.__r&&this.__r()}}
+
+class Component extends DCLogic {
+renderVals() {
+const st = this.state || {};
+const tab = st.tab || 'Форма';
+const SH = [
+{name:'Федора', rx:150, crown:'M120 188 C118 120 130 70 200 64 C270 70 282 120 280 188 Z'},
+{name:'Порк-пай', rx:135, crown:'M126 188 C126 150 130 118 200 116 C270 118 274 150 274 188 Z'},
+{name:'Широкі поля', rx:192, crown:'M128 188 C126 130 136 90 200 86 C264 90 274 130 272 188 Z'},
+{name:'Традиційний', rx:128, crown:'M124 188 C122 110 150 40 200 40 C250 40 278 110 276 188 Z'}
+];
+const CO = [{name:'Лісовий зелений',hex:'#264833'},{name:'Горіховий',hex:'#8A6A45'},{name:'Графіт',hex:'#2A2622'},{name:'Пісочний',hex:'#CDB98F'},{name:'Бордо',hex:'#6B2A2E'},{name:'Кремовий',hex:'#EDE3CF'}];
+const BA = [{name:'Шкіряна стрічка',hex:'#5A3B24'},{name:'Ткана гуцульська стрічка',hex:'#B5412F'},{name:'Репсова стрічка',hex:'#1F2A22'},{name:'Без стрічки',hex:'transparent'}];
+const s = SH.find((x) => x.name === st.shape) || SH[0];
+const c = CO.find((x) => x.name === st.colour) || CO[0];
+const b = BA.find((x) => x.name === st.band) || BA[1];
+const ring = (on) => (on ? '2px solid #264833' : '1px solid #D6C6A6');
+return {
+shapeName: s.name, colourName: c.name,
+hex: c.hex, bandHex: b.hex, crown: s.crown, brimRx: s.rx,
+tabShape: tab === 'Форма', tabColour: tab === 'Колір', tabBand: tab === 'Стрічка',
+tabs: ['Форма','Колір','Стрічка'].map((l) => ({ label: l, on: l === tab, line: l === tab ? '2px solid #264833' : '2px solid transparent', pick: () => this.setState({ tab: l }) })),
+shapes: SH.map((x) => ({ ...x, on: x === s, ring: ring(x === s), pick: () => this.setState({ shape: x.name }) })),
+colours: CO.map((x) => ({ ...x, on: x === c, ring: ring(x === c), pick: () => this.setState({ colour: x.name }) })),
+bands: BA.map((x) => ({ ...x, on: x === b, ring: ring(x === b), pick: () => this.setState({ band: x.name }) }))
+};
+}
+}
+
+document.addEventListener('alpine:init',()=>Alpine.data('dc',()=>{const c=new Component();return{v:c.renderVals(),init(){c.__r=()=>{this.v=c.renderVals()}}}}))</script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body>
+<div x-data="dc">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#264833;text-decoration:none}a:hover{color:#0F2A1B}
+button{font:inherit}
+</style>
+
+<div style="width: 390px; height: 844px; display: flex; flex-direction: column; font-family: 'Manrope', system-ui, sans-serif; color: #1F2A22; background: #EFE6D4; font-size: 15px; line-height: 1.5; overflow: hidden">
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 4px">
+<a href="../ProductMobile.uk.html" aria-label="Закрити" style="display: flex; padding: 12px; color: #264833"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></a>
+<div role="tablist" aria-label="Вигляд" style="display: flex; border: 1px solid #264833">
+<span role="tab" aria-selected="true" style="padding: 8px 14px; font-size: 13px; background: #264833; color: #F7F2E8">3D</span>
+<a href="TryOnMobile.uk.html" role="tab" aria-selected="false" style="padding: 8px 14px; font-size: 13px">На мені</a>
+</div>
+<button type="button" aria-label="Надіслати другові" style="background: none; border: 0; padding: 12px; color: #264833"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="6" cy="12" r="2.5"></circle><circle cx="18" cy="6" r="2.5"></circle><circle cx="18" cy="18" r="2.5"></circle><path d="M8.2 11l7.6-4M8.2 13l7.6 4"></path></svg></button>
+</header>
+
+<section aria-label="3D-перегляд" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px">
+<svg width="330" height="200" viewBox="0 0 400 240" role="img" :aria-label="`Перегляд: ${v.shapeName}, ${v.colourName}`">
+<ellipse cx="200" cy="222" rx="150" ry="10" fill="#1F2A22" opacity="0.12"></ellipse>
+<ellipse cx="200" cy="190" :rx="v.brimRx" ry="34" :fill="v.hex"></ellipse>
+<path :d="v.crown" :fill="v.hex"></path>
+<path d="M112 160 L288 160 L290 188 L110 188 Z" :fill="v.bandHex"></path>
+<ellipse cx="200" cy="190" :rx="v.brimRx" ry="34" fill="none" stroke="#000000" stroke-opacity="0.15"></ellipse>
+</svg>
+<span style="font-size: 12px; color: #5A5442">Тягніть, щоб обернути</span>
+</section>
+
+<section aria-label="Параметри" style="background: #F7F2E8; border-radius: 20px 20px 0 0; padding: 10px 20px 20px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 -4px 20px rgba(31,42,34,0.08)">
+<span aria-hidden="true" style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #D6C6A6"></span>
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<b style="font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500"><span x-text="v.shapeName"></span></b>
+<span style="font-size: 13px; color: #4A5A4E">від [PRICE]</span>
+</div>
+<div role="tablist" aria-label="Групи параметрів" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid #D6C6A6">
+<template x-for="(t, $index) in v.tabs"><div style="display: contents">
+<button type="button" role="tab" :aria-selected="t.on" @click="t.pick()" :style="`min-height: 44px; background: none; border: 0; border-bottom: ${t.line}; color: #264833; font-size: 14px; cursor: pointer`"><span x-text="t.label"></span></button>
+</div></template>
+</div>
+
+<div style="min-height: 104px">
+<template x-if="v.tabShape"><div style="display: contents">
+<div style="display: flex; gap: 8px; overflow-x: auto">
+<template x-for="(s, $index) in v.shapes"><div style="display: contents">
+<button type="button" :aria-pressed="s.on" @click="s.pick()" :style="`flex: 0 0 84px; min-height: 96px; background: #FFFFFF; font-size: 12px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; padding: 8px 4px; border: ${s.ring}`"><svg width="56" height="34" viewBox="0 0 400 240" aria-hidden="true"><ellipse cx="200" cy="190" :rx="s.rx" ry="34" fill="#264833"></ellipse><path :d="s.crown" fill="#264833"></path></svg><span x-text="s.name"></span></button>
+</div></template>
+</div>
+</div></template>
+<template x-if="v.tabColour"><div style="display: contents">
+<p style="margin: 0 0 8px; font-size: 13px; color: #4A5A4E"><span x-text="v.colourName"></span></p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<template x-for="(c, $index) in v.colours"><div style="display: contents">
+<button type="button" :aria-label="c.name" :aria-pressed="c.on" @click="c.pick()" :style="`width: 48px; height: 48px; border-radius: 50%; padding: 4px; background: transparent; border: ${c.ring}`"><span :style="`display: block; width: 100%; height: 100%; border-radius: 50%; background: ${c.hex}`"></span></button>
+</div></template>
+</div>
+</div></template>
+<template x-if="v.tabBand"><div style="display: contents">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<template x-for="(b, $index) in v.bands"><div style="display: contents">
+<button type="button" :aria-pressed="b.on" @click="b.pick()" :style="`min-height: 46px; padding: 0 10px; background: #FFFFFF; font-size: 13px; display: flex; align-items: center; gap: 8px; text-align: left; border: ${b.ring}`"><span :style="`flex: 0 0 22px; height: 8px; background: ${b.hex}; border: 1px solid #D6C6A6`"></span><span x-text="b.name"></span></button>
+</div></template>
+</div>
+</div></template>
+</div>
+
+<a href="ResultMobile.uk.html" style="min-height: 52px; display: flex; align-items: center; justify-content: center; background: #264833; color: #F7F2E8; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Замовити цей капелюх</a>
+</section>
+</div>
+</div>
+</body>
+</html>

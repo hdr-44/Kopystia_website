@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kopytsia — Товар, мобільна</title>
+<script>class DCLogic{constructor(){this.props={};this.state=null}setState(p){this.state=Object.assign({},this.state,p);this.__r&&this.__r()}forceUpdate(){this.__r&&this.__r()}}
+
+class Component extends DCLogic {
+renderVals() {
+const st = this.state || {};
+const colour = st.colour || 'Лісовий зелений';
+const size = st.size || '57';
+const cs = [{name:'Лісовий зелений',hex:'#264833'},{name:'Горіховий',hex:'#8A6A45'},{name:'Графіт',hex:'#2A2622'},{name:'Пісочний',hex:'#CDB98F'}];
+return {
+colour,
+colours: cs.map((c) => ({ ...c, on: c.name === colour, ring: c.name === colour ? '2px solid #264833' : '1px solid #D6C6A6', pick: () => this.setState({ colour: c.name }) })),
+sizes: ['55','56','57','58','59'].map((s) => ({ label: s, on: s === size, bg: s === size ? '#264833' : 'transparent', fg: s === size ? '#F7F2E8' : '#264833', pick: () => this.setState({ size: s }) })),
+accordions: ['Деталі та матеріали', 'Догляд за капелюхом', 'Доставка та терміни виготовлення', 'Повернення', 'Зроблено в Карпатах'],
+reviews: [{"img": "img/hoverla.jpg", "name": "Говерла", "shape": "Вестерн", "colour": "Чорний, стрічка з бісером", "felt": "#1E1C1A", "price": "€160", "tag": ""}, {"img": "img/pip-ivan.jpg", "name": "Піп Іван", "shape": "Вестерн", "colour": "Кремовий, розписані вершини", "felt": "#E6DCC8", "price": "€125", "tag": ""}, {"img": "img/kolomyia.jpg", "name": "Коломия", "shape": "Широкі поля", "colour": "Чорний, червона стрічка", "felt": "#1E1C1A", "price": "€150", "tag": "Останній"}]
+};
+}
+}
+
+document.addEventListener('alpine:init',()=>Alpine.data('dc',()=>{const c=new Component();return{v:c.renderVals(),init(){c.__r=()=>{this.v=c.renderVals()}}}}))</script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body>
+<div x-data="dc">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#264833;text-decoration:none}a:hover{color:#0F2A1B}
+button{font:inherit}
+</style>
+
+<div style="width: 390px; min-height: 3200px; font-family: 'Manrope', system-ui, sans-serif; color: #1F2A22; background: #F7F2E8; font-size: 15px; line-height: 1.6; position: relative">
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 4px; border-bottom: 1px solid #E3CCA4">
+<a href="ShopMobile.uk.html" aria-label="Назад до магазину" style="padding: 12px; color: #264833; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+<a href="HomeMobile.uk.html" style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; letter-spacing: 0.18em">KOPYTSIA</a>
+<a href="Cart.uk.html" aria-label="Кошик, 0 товарів" style="background: none; border: 0; padding: 12px; color: #264833; display: flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg></a>
+</header>
+
+<div style="position: relative">
+<div style="aspect-ratio: 4 / 5; background: #4A4436 url(img/chornohora.jpg) center / cover; display: flex; align-items: flex-end; padding: 12px; font-size: 12px; color: #5A5442"></div>
+<a href="tryon/TryOnMobile.uk.html" style="position: absolute; top: 12px; left: 12px; display: flex; align-items: center; gap: 8px; padding: 12px 14px; background: #264833; color: #F7F2E8; font-size: 13px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>Приміряти</a>
+<div aria-hidden="true" style="position: absolute; bottom: 16px; left: 0; right: 0; display: flex; justify-content: center; gap: 6px"><span style="width: 18px; height: 3px; background: #264833"></span><span style="width: 18px; height: 3px; background: #F7F2E8"></span><span style="width: 18px; height: 3px; background: #F7F2E8"></span><span style="width: 18px; height: 3px; background: #F7F2E8"></span><span style="width: 18px; height: 3px; background: #F7F2E8"></span></div>
+</div>
+
+<section style="padding: 24px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; justify-content: space-between; gap: 12px">
+<div>
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 500; line-height: 1.05">Чорногора</h1>
+<p style="margin: 4px 0 0; font-size: 19px">€145</p>
+<p style="margin: 2px 0 0; font-size: 13px"><span style="color: #264833">★★★★★</span> <a href="#reviews" style="color: #4A5A4E">[N] відгуків</a></p>
+</div>
+<button type="button" aria-label="Додати в обране" style="align-self: flex-start; width: 48px; height: 48px; border: 1px solid #264833; background: transparent; color: #264833; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"></path></svg></button>
+</div>
+
+<fieldset style="border: 0; margin: 0; padding: 0">
+<legend style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px">Колір · <span style="text-transform: none; letter-spacing: 0"><span x-text="v.colour"></span></span></legend>
+<div style="display: flex; gap: 8px">
+<template x-for="(c, $index) in v.colours"><div style="display: contents">
+<button type="button" :aria-label="c.name" :aria-pressed="c.on" @click="c.pick()" :style="`width: 44px; height: 44px; border-radius: 50%; padding: 4px; background: transparent; border: ${c.ring}`"><span :style="`display: block; width: 100%; height: 100%; border-radius: 50%; background: ${c.hex}`"></span></button>
+</div></template>
+</div>
+</fieldset>
+
+<fieldset style="border: 0; margin: 0; padding: 0">
+<div style="display: flex; justify-content: space-between; margin-bottom: 10px"><legend style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; float: left">Розмір</legend><a href="Help.uk.html#size" style="font-size: 14px; border-bottom: 1px solid #264833">Таблиця розмірів</a></div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px">
+<template x-for="(s, $index) in v.sizes"><div style="display: contents">
+<button type="button" :aria-pressed="s.on" @click="s.pick()" :style="`min-height: 48px; border: 1px solid #264833; background: ${s.bg}; color: ${s.fg}; font-size: 14px`"><span x-text="s.label"></span></button>
+</div></template>
+</div>
+</fieldset>
+
+<p style="margin: 0; color: #4A5A4E">[Короткий опис]</p>
+<a href="tryon/TryOnMobile.uk.html" style="min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid #264833; font-size: 14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>Приміряйте на собі</a>
+<p style="margin: 0; font-size: 13px; color: #4A5A4E">Готовий до відправлення за [X] днів · Безкоштовне повернення протягом [X] днів</p>
+
+<div style="border-top: 1px solid #D6C6A6">
+<template x-for="(a, $index) in v.accordions"><div style="display: contents">
+<details style="border-bottom: 1px solid #D6C6A6; padding: 14px 0"><summary style="cursor: pointer; font-weight: 500"><span x-text="a"></span></summary><p style="margin: 8px 0 0; color: #4A5A4E">[Вміст]</p></details>
+</div></template>
+</div>
+</section>
+
+<section style="background: #EFE6D4; padding: 40px 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500">Хочете по-своєму?</h2>
+<a href="CustomMobile.uk.html" style="align-self: flex-start; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid #264833">Зробити на замовлення</a>
+</section>
+
+<section id="reviews" style="padding: 48px 24px; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 500">Відгуки</h2>
+<template x-for="(r, $index) in v.reviews"><div style="display: contents">
+<figure style="margin: 0; padding: 20px; background: #FFFFFF; border: 1px solid #E3CCA4; display: flex; flex-direction: column; gap: 8px">
+<span role="img" aria-label="5 з 5 зірок" style="color: #264833; letter-spacing: 3px">★★★★★</span>
+<blockquote style="margin: 0">[Текст відгуку]</blockquote>
+<figcaption style="font-size: 12px; color: #5E6B60">[Імʼя] · Підтверджений покупець</figcaption>
+</figure>
+</div></template>
+<button type="button" style="min-height: 48px; border: 1px solid #264833; background: transparent; color: #264833">Усі відгуки</button>
+</section>
+
+<section style="padding: 0 0 48px">
+<h2 style="margin: 0 0 16px; padding: 0 24px; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500">Вам також може сподобатися</h2>
+<div style="display: flex; gap: 12px; overflow-x: auto; padding: 0 24px">
+<template x-for="(x, $index) in v.reviews"><div style="display: contents">
+<a href="ProductMobile.uk.html" style="flex: 0 0 200px; display: flex; flex-direction: column; gap: 6px; color: #1F2A22"><div :style="`aspect-ratio: 4 / 5; background: ${x.felt} url(${x.img}) center / cover`"></div><span style="font-family: 'Cormorant Garamond', serif; font-size: 19px"><span x-text="x.name"></span></span></a>
+</div></template>
+</div>
+</section>
+
+<footer style="background: #1C3626; color: #E3CCA4; padding: 48px 24px 32px; display: flex; flex-direction: column; gap: 14px; font-size: 14px">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 26px; letter-spacing: 0.18em; color: #F7F2E8">KOPYTSIA</span>
+<a href="ShopMobile.uk.html" style="color: #E3CCA4; padding: 6px 0">Магазин</a>
+<a href="CustomMobile.uk.html" style="color: #E3CCA4; padding: 6px 0">Капелюх на замовлення</a>
+<a href="Help.uk.html" style="color: #E3CCA4; padding: 6px 0">Допомога та часті питання</a>
+<a href="Contact.uk.html" style="color: #E3CCA4; padding: 6px 0">Контакти</a>
+<div style="display: flex; gap: 16px"><a href="https://www.instagram.com/" style="color: #F7F2E8">Instagram</a><a href="https://www.tiktok.com/" style="color: #F7F2E8">TikTok</a><a href="https://www.facebook.com/" style="color: #F7F2E8">Facebook</a></div>
+<span style="font-size: 12px">© Kopytsia · <a href="Help.uk.html#legal" style="color: #E3CCA4">Умови · Конфіденційність · Файли cookie</a></span>
+</footer>
+
+<div style="position: sticky; bottom: 0; background: #F7F2E8; border-top: 1px solid #D6C6A6; padding: 12px 16px; display: flex; flex-direction: column; gap: 8px">
+<a href="Cart.uk.html" style="min-height: 52px; background: #264833; color: #F7F2E8; border: 0; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; display: flex; align-items: center; justify-content: center">Додати в кошик · €145</a>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<a href="Checkout.uk.html" style="min-height: 44px; background: #1F2A22; color: #FFFFFF; border: 0; font-size: 14px; display: flex; align-items: center; justify-content: center">Apple Pay</a>
+<a href="Checkout.uk.html" style="min-height: 44px; background: #FFFFFF; color: #1F2A22; border: 1px solid #1F2A22; font-size: 14px; display: flex; align-items: center; justify-content: center">Google Pay</a>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

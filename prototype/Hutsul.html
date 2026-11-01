@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kopytsia — Hutsul life</title>
+<script>class DCLogic{constructor(){this.props={};this.state=null}setState(p){this.state=Object.assign({},this.state,p);this.__r&&this.__r()}forceUpdate(){this.__r&&this.__r()}}
+
+class Component extends DCLogic {
+renderVals() {
+return {
+themes: [{t:'[Tradition: e.g. felting]',bg:'url(img/hutsul-3.jpg) center / cover'},{t:'[Tradition: e.g. woven bands]',bg:'url(img/hutsul-2.jpg) center / cover'},{t:'[Tradition: e.g. festivals]',bg:'url(img/hutsul-7.jpg) center / cover'}],
+posts: [{bg:'url(img/hutsul-1.jpg) center / cover'},{bg:'url(img/hutsul-6.jpg) center / cover'},{bg:'url(img/hutsul-4.jpg) center / cover'}]
+};
+}
+}
+
+document.addEventListener('alpine:init',()=>Alpine.data('dc',()=>{const c=new Component();return{v:c.renderVals(),init(){c.__r=()=>{this.v=c.renderVals()}}}}))</script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body>
+<div x-data="dc">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#264833;text-decoration:none}a:hover{color:#0F2A1B}
+button{font:inherit}
+</style>
+
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #1F2A22; background: #F7F2E8; font-size: 16px; line-height: 1.7">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 40px; border-bottom: 1px solid #E3CCA4">
+<a href="Main.html" style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; letter-spacing: 0.18em">KOPYTSIA</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 32px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500">
+<a href="Shop.html">Shop</a>
+<a href="Custom.html">Custom hat</a>
+<a href="Hutsul.html" aria-current="page" style="border-bottom: 1px solid #264833">Hutsul life</a>
+<a href="About.html">About</a>
+<a href="Journal.html">Journal</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 4px; font-size: 13px">
+<span style="background: none; border: 0; padding: 12px 8px; color: #264833; cursor: pointer; display: inline-flex; align-items: center; gap: 4px"><a href="Hutsul.uk.html" lang="uk" style="color: inherit">UA</a> / <b>EN</b></span>
+<button type="button" style="background: none; border: 0; padding: 12px 8px; color: #264833; cursor: pointer">EUR €</button>
+<a href="Cart.html" aria-label="Cart, 0 items" style="background: none; border: 0; padding: 12px; color: #264833; cursor: pointer; display: flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg></a>
+</div>
+</header>
+
+<section style="min-height: 640px; background: #EFE6D4 url(img/hutsul-6.jpg) right center / auto 100% no-repeat; display: flex; flex-direction: column; justify-content: flex-end; padding: 64px 40px">
+<div style="max-width: 1280px; width: 100%; margin: 0 auto; display: flex; flex-direction: column; gap: 16px">
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 96px; line-height: 0.95; font-weight: 500; max-width: 900px">Hutsul life</h1>
+<p style="margin: 0; font-size: 20px; max-width: 560px">[Subtitle: the mountains, traditions and people behind every hat]</p>
+</div>
+</section>
+
+<article style="max-width: 720px; margin: 0 auto; padding: 120px 24px 80px">
+<p style="margin: 0 0 8px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #5E6B60">Chapter one</p>
+<h2 style="margin: 0 0 24px; font-family: 'Cormorant Garamond', serif; font-size: 48px; line-height: 1.1; font-weight: 500">[Chapter title: the mountains]</h2>
+<p style="margin: 0 0 20px; font-size: 19px">[Opening paragraph of the long-read. Written by the brand: place, seasons, the everyday rhythm of village life.]</p>
+<p style="margin: 0; font-size: 19px">[Second paragraph.]</p>
+</article>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 0 40px 120px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px">
+<figure style="margin: 0; grid-row: span 2; display: flex; flex-direction: column; gap: 8px"><div style="flex: 1; min-height: 640px; background: #CDBE9F url(img/hutsul-4.jpg) center / cover"></div><figcaption style="font-size: 13px; color: #5E6B60">[Caption]</figcaption></figure>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="aspect-ratio: 4 / 3; background: #DCCFB5 url(img/hutsul-5.jpg) center / cover"></div><figcaption style="font-size: 13px; color: #5E6B60">[Caption]</figcaption></figure>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="aspect-ratio: 4 / 3; background: #E6DAC2 url(img/hutsul-8.jpg) center / cover"></div><figcaption style="font-size: 13px; color: #5E6B60">[Caption]</figcaption></figure>
+</section>
+
+<section style="background: #264833; color: #F7F2E8; padding: 120px 40px">
+<blockquote style="max-width: 960px; margin: 0 auto; text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 48px; line-height: 1.25">“[A quote from a local craftsperson or elder]”
+<footer style="margin-top: 24px; font-family: 'Manrope', sans-serif; font-style: normal; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: #E3CCA4">[Name], [Village]</footer>
+</blockquote>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 120px 40px">
+<h2 style="margin: 0 0 48px; font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500">Traditions we carry</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px">
+<template x-for="(t, $index) in v.themes"><div style="display: contents">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div :style="`aspect-ratio: 1; background: #E6DAC2 ${t.bg}`"></div>
+<h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500"><span x-text="t.t"></span></h3>
+<p style="margin: 0; color: #4A5A4E">[Short text]</p>
+</div>
+</div></template>
+</div>
+</section>
+
+<section style="background: #EFE6D4; padding: 96px 40px">
+<div style="max-width: 1280px; margin: 0 auto">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 32px">
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 500">More from the Journal</h2>
+<a href="Journal.html" style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid #264833">All stories</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px">
+<template x-for="(p, $index) in v.posts"><div style="display: contents">
+<a href="Journal.html" style="display: flex; flex-direction: column; gap: 12px; color: #1F2A22"><div :style="`aspect-ratio: 3 / 2; background: #DCCFB5 ${p.bg}`"></div><span style="font-family: 'Cormorant Garamond', serif; font-size: 24px">[Story title]</span></a>
+</div></template>
+</div>
+</div>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 96px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px">
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 500">Wear a piece of the mountains</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="Shop.html" style="padding: 16px 28px; background: #264833; color: #F7F2E8; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Shop hats</a>
+<a href="Custom.html" style="padding: 16px 28px; border: 1px solid #264833; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">Create your own</a>
+</div>
+</section>
+
+<footer style="background: #1C3626; color: #E3CCA4; padding: 80px 40px 40px; font-size: 14px">
+<div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 28px; letter-spacing: 0.18em; color: #F7F2E8">KOPYTSIA</span>
+<span>Handmade hats from the Ukrainian Carpathians</span>
+<div style="display: flex; gap: 16px"><a href="https://www.instagram.com/" style="color: #F7F2E8">Instagram</a><a href="https://www.tiktok.com/" style="color: #F7F2E8">TikTok</a><a href="https://www.facebook.com/" style="color: #F7F2E8">Facebook</a></div>
+</div>
+<nav aria-label="Shop" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Shop</b><a href="Shop.html" style="color: #E3CCA4">All hats</a><a href="Custom.html" style="color: #E3CCA4">Custom hat</a><a href="GiftCard.html" style="color: #E3CCA4">Gift card</a><a href="Wishlist.html" style="color: #E3CCA4">Wishlist</a></nav>
+<nav aria-label="Help" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Help</b><a href="Help.html#size" style="color: #E3CCA4">Size guide</a><a href="Help.html#care" style="color: #E3CCA4">Hat care</a><a href="Help.html#delivery" style="color: #E3CCA4">Delivery &amp; production times</a><a href="Help.html#returns" style="color: #E3CCA4">Returns</a><a href="Help.html#faq" style="color: #E3CCA4">FAQ</a></nav>
+<nav aria-label="Brand" style="display: flex; flex-direction: column; gap: 10px"><b style="color: #F7F2E8; font-weight: 600">Kopytsia</b><a href="About.html" style="color: #E3CCA4">About</a><a href="Hutsul.html" style="color: #E3CCA4">Hutsul life</a><a href="Journal.html" style="color: #E3CCA4">Journal</a><a href="Contact.html" style="color: #E3CCA4">Contact</a><a href="Contact.html#collab" style="color: #E3CCA4">Collaborations</a></nav>
+</div>
+<div style="max-width: 1280px; margin: 64px auto 0; padding-top: 24px; border-top: 1px solid #3B5C46; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 12px">
+<span>© Kopytsia · <a href="Help.html#legal" style="color: #E3CCA4">Terms / Public offer</a> · <a href="Help.html#legal" style="color: #E3CCA4">Privacy</a> · <a href="Help.html#legal" style="color: #E3CCA4">Cookies</a></span>
+<span>Apple Pay · Google Pay · Visa · Mastercard</span>
+</div>
+</footer>
+</div>
+</div>
+</body>
+</html>
