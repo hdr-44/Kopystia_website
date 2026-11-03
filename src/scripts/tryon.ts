@@ -1,6 +1,6 @@
 // Live try-on: MediaPipe Face Landmarker (runs locally in the browser) + three.js overlay.
 // Nothing from the camera leaves the device.
-type Hat = { id: string; label: string; src: string; width: number; offset: [number, number, number]; tilt: number; credit?: string; creditUrl?: string };
+type Hat = { id: string; label: string; src: string; width: number; yaw?: number; offset: [number, number, number]; tilt: number; credit?: string; creditUrl?: string };
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 
@@ -69,8 +69,9 @@ export function initTryOn() {
       const anchor = new THREE.Group(); anchor.matrixAutoUpdate = false; scene.add(anchor);
       // Invisible head that hides the back of the hat behind the visitor's head.
       // shortcut: ellipsoid occluder, swap for a real head mesh if edges look wrong on many faces.
-      const occluder = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 24), new THREE.MeshBasicMaterial({ colorWrite: false }));
-      occluder.scale.set(7.8, 10.5, 10); occluder.position.set(0, 1.5, -6); occluder.renderOrder = -1;
+      const occluder = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 24), location.search.includes('debug') ? new THREE.MeshBasicMaterial({ color: 0x00ff88, wireframe: true }) : new THREE.MeshBasicMaterial({ colorWrite: false }));
+      // Sized from MediaPipe's canonical face: temples ±7.7, forehead top y 8.3 / z 4.5, ears z -2.4.
+      occluder.scale.set(7.8, 9.5, 9.6); occluder.position.set(0, 3, -4.5); occluder.renderOrder = -1;
       anchor.add(occluder);
 
       const loader = new GLTFLoader();
@@ -85,6 +86,7 @@ export function initTryOn() {
           const size = box.getSize(new THREE.Vector3()), center = box.getCenter(new THREE.Vector3());
           raw.position.set(-center.x, -box.min.y, -center.z); // brim base at y=0, centered
           model = new THREE.Group(); model.add(raw);
+          model.rotation.y = h.yaw ?? 0;
           model.scale.setScalar(h.width / Math.max(size.x, size.z));
           cache.set(h.id, model);
         }
