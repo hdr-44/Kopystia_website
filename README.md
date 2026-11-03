@@ -30,5 +30,14 @@ Netlify: build command `npm run build`, publish dir `dist`. Set `MAIL_MODE` and 
 
 Anything marked `PLACEHOLDER` / `ЗРАЗОК` must be replaced with confirmed content before launch.
 
+## Scanned hats (3D files)
+Configurator shapes come from the numbers in `configurator.json` (`height`, `topRadius`, `pinch`, `pinchDepth`, `pinchAngle`, `dentStretch`, brim `width`, `snap`). Scans of real hats should follow these rules:
+- Scan with Polycam, Scaniverse or Apple Object Capture. Clean up in Blender and export **GLB**.
+- Units in **centimetres**, origin at the centre of the head opening, the front facing **+Z**, Y up.
+- About **50k triangles or fewer**, textures **2048 px or smaller**.
+- Whole scanned hats → try-on (`public/models/`, `tryon.json`).
+- A flat felt swatch scan (diffuse + normal map, tileable) → replaces the generated fibre texture `feltNormalMap` in `src/scripts/configurator.ts`.
+- Configurator parts (crown / brim separately) need cutting in Blender at the band line. Loading them needs a small code change (an optional `model` field per option).
+
 ## Credits
 Sample try-on model: “Hat.” by Sergey Korotkikh, CC BY 4.0 — https://sketchfab.com/3d-models/hat-d9f0673d4f0445859b70892e416e293c

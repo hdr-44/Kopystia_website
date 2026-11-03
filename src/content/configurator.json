@@ -1,27 +1,112 @@
 {
   "_note": "PLACEHOLDER options until the owner confirms the element list. Each group is one interchangeable element.",
   "groups": [
-    { "id": "crown", "label": "Тулія", "options": [
-      { "id": "fedora", "label": "Федора", "height": 11, "topRadius": 7.2, "pinch": 1 },
-      { "id": "porkpie", "label": "Порк-пай", "height": 8, "topRadius": 8.4, "pinch": 0 },
-      { "id": "tall", "label": "Висока", "height": 14, "topRadius": 7.6, "pinch": 0 }
-    ]},
-    { "id": "brim", "label": "Поля", "options": [
-      { "id": "narrow", "label": "Вузькі", "width": 4 },
-      { "id": "medium", "label": "Середні", "width": 6.5 },
-      { "id": "wide", "label": "Широкі", "width": 9 }
-    ]},
-    { "id": "color", "label": "Колір фетру", "options": [
-      { "id": "black", "label": "Чорний", "hex": "#1d1b19" },
-      { "id": "sand", "label": "Пісочний", "hex": "#c9b48a" },
-      { "id": "brown", "label": "Коричневий", "hex": "#5a3d2b" },
-      { "id": "green", "label": "Смерековий", "hex": "#2f4034" }
-    ]},
-    { "id": "band", "label": "Стрічка", "options": [
-      { "id": "none", "label": "Без стрічки", "hex": null },
-      { "id": "leather", "label": "Шкіряна", "hex": "#3b2618" },
-      { "id": "red", "label": "Червона", "hex": "#8e2a24" },
-      { "id": "cream", "label": "Кремова", "hex": "#e6d7b4" }
-    ]}
+    {
+      "id": "crown",
+      "label": "Тулія",
+      "options": [
+        {
+          "id": "fedora",
+          "label": "Федора",
+          "height": 11,
+          "topRadius": 7.2,
+          "pinch": 1,
+          "pinchDepth": 1.1,
+          "pinchAngle": 0.55,
+          "dentStretch": 1.5
+        },
+        {
+          "id": "porkpie",
+          "label": "Порк-пай",
+          "height": 8,
+          "topRadius": 8.4,
+          "pinch": 0
+        },
+        {
+          "id": "tall",
+          "label": "Висока",
+          "height": 14,
+          "topRadius": 7.6,
+          "pinch": 0,
+          "dentStretch": 1
+        }
+      ]
+    },
+    {
+      "id": "brim",
+      "label": "Поля",
+      "options": [
+        {
+          "id": "narrow",
+          "label": "Вузькі",
+          "width": 4,
+          "snap": 0.3
+        },
+        {
+          "id": "medium",
+          "label": "Середні",
+          "width": 6.5,
+          "snap": 0.7
+        },
+        {
+          "id": "wide",
+          "label": "Широкі",
+          "width": 9,
+          "snap": 1.1
+        }
+      ]
+    },
+    {
+      "id": "color",
+      "label": "Колір фетру",
+      "options": [
+        {
+          "id": "black",
+          "label": "Чорний",
+          "hex": "#1d1b19"
+        },
+        {
+          "id": "sand",
+          "label": "Пісочний",
+          "hex": "#c9b48a"
+        },
+        {
+          "id": "brown",
+          "label": "Коричневий",
+          "hex": "#5a3d2b"
+        },
+        {
+          "id": "green",
+          "label": "Смерековий",
+          "hex": "#2f4034"
+        }
+      ]
+    },
+    {
+      "id": "band",
+      "label": "Стрічка",
+      "options": [
+        {
+          "id": "none",
+          "label": "Без стрічки",
+          "hex": null
+        },
+        {
+          "id": "leather",
+          "label": "Шкіряна",
+          "hex": "#3b2618"
+        },
+        {
+          "id": "red",
+          "label": "Червона",
+          "hex": "#8e2a24"
+        },
+        {
+          "id": "cream",
+          "label": "Кремова",
+          "hex": "#e6d7b4"
+        }
+      ]
+    }
   ]
 }
