@@ -5,7 +5,7 @@ Ground line draws out -> loose straw -> the loaf-shaped копиця from the lo
 -> a line-art hat drops onto it -> the KOPYTSIA wordmark fades in.
 
 Outputs (next to this script):
-  kopytsia-loader.gif        non-looping animation (plays once)
+  public/loader/kopytsia-loader.gif  non-looping animation (plays once)
   kopytsia-loader-final.png  static final pose, 2x resolution
 
 Run:  python3 loader/generate.py         (needs Pillow)
@@ -296,7 +296,7 @@ def main():
     pal.putpalette(pv)
     q = [f.quantize(palette=pal, dither=Image.Dither.NONE) for f in frames]
     durations = [int(1000 / fps)] * (len(q) - 1) + [2000]
-    gif = os.path.join(HERE, "kopytsia-loader.gif")
+    gif = os.path.join(HERE, "..", "public", "loader", "kopytsia-loader.gif")  # served by the site
     # No `loop` argument -> no NETSCAPE extension -> browsers play it once and stop on the last frame.
     q[0].save(gif, save_all=True, append_images=q[1:], duration=durations, optimize=True, disposal=1)
 

@@ -9,6 +9,7 @@ import config from '../content/configurator.json';
     <p class="placeholder-note">ЗРАЗОК: тестова модель і варіанти. Остаточний список елементів ще затверджується.</p>
     <div class="cfg">
       <div class="stage">
+        <img class="busy" id="cfg-busy" src="/loader/kopytsia-loader.gif" alt="Завантаження 3D-моделі" />
         <canvas id="hat-canvas" aria-label="3D-модель капелюха. Перетягуйте, щоб обертати."></canvas>
         <p class="fallback" hidden>Ваш браузер не підтримує 3D. Ви все одно можете обрати варіанти і надіслати запит.</p>
         <p class="hint muted">Перетягуйте, щоб обертати; колесо або два пальці — масштаб.</p>
@@ -36,6 +37,8 @@ import config from '../content/configurator.json';
 </Base>
 <style>
   .cfg { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1.5rem; align-items: start; }
+  .stage { position: relative; }
+  .busy { position: absolute; inset: 0; margin: auto; width: min(60%, 320px); }
   .stage { background: radial-gradient(circle at 50% 40%, #2a2622, var(--surface)); border: 1px solid var(--line); border-radius: var(--radius); }
   canvas { width: 100%; aspect-ratio: 4/3; display: block; touch-action: none; }
   .hint, .fallback { margin: .5rem 1rem; font-size: .9rem; }

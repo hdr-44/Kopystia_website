@@ -1,12 +1,12 @@
 /* PLACEHOLDER palette and fonts derived from the logo until brand identity is final. */
 :root {
-  --bg: #121110;
+  --bg: #131415; /* = loader background in loader/generate.py */
   --surface: #1c1a18;
   --line: #3a352e;
   --text: #ece4d4;
   --muted: #b3a891;
   --accent: #d9c08a;
-  --accent-ink: #121110;
+  --accent-ink: #131415;
   --error: #f08a7e;
   --radius: 6px;
   --font-display: 'Ruslan Display', Georgia, serif;

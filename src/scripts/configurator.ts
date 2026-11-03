@@ -39,6 +39,7 @@ export async function initConfigurator() {
   } catch (e) {
     console.warn('3D unavailable', e);
     canvas.hidden = true;
+    document.getElementById('cfg-busy')?.remove();
     canvas.parentElement!.querySelector<HTMLElement>('.fallback')!.hidden = false;
     return;
   }
@@ -92,5 +93,6 @@ export async function initConfigurator() {
     camera.updateProjectionMatrix();
   }).observe(canvas);
 
+  document.getElementById('cfg-busy')?.remove();
   renderer.setAnimationLoop(() => { controls.update(); renderer.render(scene, camera); });
 }

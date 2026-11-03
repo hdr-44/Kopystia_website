@@ -15,7 +15,7 @@ import tryon from '../content/tryon.json';
     <div class="stage" id="tryon-stage" hidden>
       <video id="tryon-video" playsinline muted></video>
       <canvas id="tryon-canvas"></canvas>
-      <p class="loading" id="tryon-loading">Завантаження…</p>
+      <div class="loading" id="tryon-loading"><img src="/loader/kopytsia-loader.gif" alt="Завантаження примірки" /></div>
     </div>
     <p class="controls">
       <button class="btn" id="tryon-start" type="button">Увімкнути камеру</button>
@@ -35,7 +35,8 @@ import tryon from '../content/tryon.json';
   .stage { position: relative; max-width: 720px; margin-top: 1rem; border-radius: var(--radius); overflow: hidden; background: #000; }
   .stage video, .stage canvas { display: block; width: 100%; height: auto; transform: scaleX(-1); }
   .stage canvas { position: absolute; inset: 0; height: 100%; }
-  .loading { position: absolute; inset: auto 0 0; margin: 0; padding: .5rem 1rem; background: #000a; }
+  .loading { position: absolute; inset: 0; display: grid; place-items: center; background: var(--bg); }
+  .loading img { width: min(60%, 320px); }
   .status { color: var(--error); }
   .credit { font-size: .85rem; }
 </style>

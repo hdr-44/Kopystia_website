@@ -24,6 +24,7 @@ Netlify: build command `npm run build`, publish dir `dist`. Set `MAIL_MODE` and 
 | Blog articles | `src/pages/blog/*.md` |
 | Configurator options | `src/content/configurator.json` |
 | Try-on hat forms (GLB, size, position) | `src/content/tryon.json` + `public/models/` |
+| Loading animation (regenerate: `python3 loader/generate.py`, needs Pillow) | `loader/` → `public/loader/` |
 | Photos / logo | `public/images/`, `public/logo.png` |
 | Inquiry endpoint, validation, email | `src/pages/api/inquiry.ts`, `src/lib/validate.ts`, `src/lib/mail.ts` |
 
