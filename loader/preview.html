@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kopytsia — превʼю заставки</title>
+<style>
+  body { margin: 0; font-family: Georgia, serif; background: #131415; color: #d3c29a; }
+  main { min-height: 100vh; display: grid; place-items: center; text-align: center; padding: 2rem; box-sizing: border-box; }
+  img.hero { width: min(80vw, 320px); border-radius: 4px; }
+  .cta, button { font: inherit; padding: .8rem 1.4rem; border: 1px solid #d3c29a; background: #d3c29a; color: #131415; text-decoration: none; cursor: pointer; }
+  button { background: transparent; color: #d3c29a; margin-top: 1rem; }
+  .note { font-size: .85rem; opacity: .7; max-width: 32rem; }
+</style>
+</head>
+<body>
+<script src="kopytsia-loader.js" data-src="kopytsia-loader.gif"></script>
+<main>
+  <div>
+    <p class="note">[ЗАГЛУШКА] Тимчасова домашня сторінка для перегляду заставки.</p>
+    <img class="hero" src="../assets/hats/Bitmap.png" alt="Фетровий капелюх Kopytsia">
+    <h1>Kopytsia</h1>
+    <p><a class="cta" href="#">Замовити кастомний капелюх</a></p>
+    <button type="button" onclick="sessionStorage.clear(); KopytsiaLoader.replay()">Повторити заставку</button>
+    <p class="note">Перше відкриття у вкладці показує заставку, якщо сторінка ще вантажиться. Щоб побачити її знову при перезавантаженні, натисніть «Повторити заставку» або відкрийте нову вкладку.</p>
+  </div>
+</main>
+</body>
+</html>
