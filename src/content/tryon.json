@@ -1,0 +1,15 @@
+{
+  "_note": "Try-on hat forms (target ~15). width = brim width on a head in cm; offset = [x,y,z] cm from MediaPipe face origin; tilt = radians backward. Tune per model.",
+  "hats": [
+    {
+      "id": "sample-hat",
+      "label": "Зразок (тестова модель)",
+      "src": "/models/hat.glb",
+      "width": 34,
+      "offset": [0, 7.5, -3],
+      "tilt": -0.12,
+      "credit": "«Hat.» — Sergey Korotkikh, CC BY 4.0",
+      "creditUrl": "https://sketchfab.com/3d-models/hat-d9f0673d4f0445859b70892e416e293c"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+import tryon from '../content/tryon.json';
+---
+<Base title="Віртуальна примірка">
+  <div class="wrap">
+    <h1>Віртуальна примірка</h1>
+    <p class="placeholder-note">ЗРАЗОК: тестова модель капелюха. Остаточні форми та кольори ще готуються.</p>
+    <p class="muted">Відео з камери обробляється лише у вашому браузері й нікуди не надсилається.</p>
+    <fieldset class="hats">
+      <legend>Форма</legend>
+      {tryon.hats.map((h, i) => <label class="opt"><input type="radio" name="hat" value={h.id} checked={i === 0} /> {h.label}</label>)}
+    </fieldset>
+    <div class="stage" id="tryon-stage" hidden>
+      <video id="tryon-video" playsinline muted></video>
+      <canvas id="tryon-canvas"></canvas>
+      <p class="loading" id="tryon-loading">Завантаження…</p>
+    </div>
+    <p class="controls">
+      <button class="btn" id="tryon-start" type="button">Увімкнути камеру</button>
+      <button class="btn ghost" id="tryon-stop" type="button" hidden>Вимкнути камеру</button>
+    </p>
+    <p class="status" id="tryon-status" role="status" aria-live="polite"></p>
+    <p class="credit muted" id="tryon-credit"></p>
+    <h2>Сподобалось? Надішліть запит</h2>
+    <InquiryForm type="custom" id="form-tryon" item={tryon.hats[0].label} showImage descriptionRequired descriptionLabel="Розмір, колір, побажання" />
+  </div>
+  <script id="tryon-data" type="application/json" set:html={JSON.stringify(tryon)} />
+</Base>
+<style>
+  .hats { border: 1px solid var(--line); border-radius: var(--radius); display: flex; flex-wrap: wrap; gap: .5rem; }
+  legend { color: var(--accent); padding: 0 .4rem; }
+  .opt { display: flex; gap: .4rem; align-items: center; padding: .4em .8em; border: 1px solid var(--line); border-radius: var(--radius); }
+  .stage { position: relative; max-width: 720px; margin-top: 1rem; border-radius: var(--radius); overflow: hidden; background: #000; }
+  .stage video, .stage canvas { display: block; width: 100%; height: auto; transform: scaleX(-1); }
+  .stage canvas { position: absolute; inset: 0; height: 100%; }
+  .loading { position: absolute; inset: auto 0 0; margin: 0; padding: .5rem 1rem; background: #000a; }
+  .status { color: var(--error); }
+  .credit { font-size: .85rem; }
+</style>
+<script>
+  import { initTryOn } from '../scripts/tryon.ts';
+  initTryOn();
+</script>

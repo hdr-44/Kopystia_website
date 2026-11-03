@@ -1,0 +1,11 @@
+{
+  "_note": "PLACEHOLDER: replace contacts and socials with confirmed owner details",
+  "name": "Kopytsia",
+  "tagline": "Ручна робота. Кастомні капелюхи. Зроблено в Україні.",
+  "email": "hello@example.com",
+  "phone": "+380 00 000 00 00",
+  "socials": [
+    { "name": "Instagram", "url": "https://instagram.com/" },
+    { "name": "Facebook", "url": "https://facebook.com/" }
+  ]
+}

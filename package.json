@@ -1,0 +1,19 @@
+{
+  "name": "kopytsia-website",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "node --test src/lib/*.test.ts",
+    "predev": "node scripts/copy-mediapipe.mjs",
+    "prebuild": "node scripts/copy-mediapipe.mjs"
+  },
+  "dependencies": {
+    "@astrojs/netlify": "^8.2.11",
+    "@mediapipe/tasks-vision": "^1.2.2",
+    "astro": "^7.4.5",
+    "three": "^0.187.0"
+  }
+}

@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+import reviews from '../content/reviews.json';
+---
+<Base title="Відгуки">
+  <div class="wrap">
+    <h1>Відгуки</h1>
+    <p class="placeholder-note">PLACEHOLDER: лише справжні відгуки клієнтів перед запуском.</p>
+    {reviews.map((r) => <blockquote><p>{r.text}</p><footer>— {r.author}</footer></blockquote>)}
+    <h2>Залиште відгук</h2>
+    <InquiryForm type="feedback" descriptionRequired descriptionLabel="Ваш відгук" submitLabel="Надіслати відгук" />
+  </div>
+</Base>
+<style>blockquote { border-left: 3px solid var(--accent); margin: 1rem 0; padding: .2rem 1rem; } blockquote footer { color: var(--muted); }</style>

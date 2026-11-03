@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+import certificates from '../content/certificates.json';
+---
+<Base title="Більше — подарункові сертифікати">
+  <div class="wrap">
+    <h1>Більше</h1>
+    <h2>Електронний подарунковий сертифікат</h2>
+    <p>Оберіть номінал і надішліть запит — ми надішлемо деталі електронною поштою.</p>
+    <InquiryForm type="certificate" itemLabel="Номінал" itemOptions={certificates.map((c) => ({ value: c.label, label: c.label }))} descriptionLabel="Для кого / побажання" submitLabel="Замовити сертифікат" />
+  </div>
+</Base>

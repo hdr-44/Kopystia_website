@@ -1,0 +1,5 @@
+[
+  { "id": "cert-200", "amount": 200, "label": "$200" },
+  { "id": "cert-300", "amount": 300, "label": "$300" },
+  { "id": "cert-500", "amount": 500, "label": "$500" }
+]

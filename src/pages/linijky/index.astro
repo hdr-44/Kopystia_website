@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import products from '../../content/products.json';
+const avail = { 'in-stock': 'В наявності', 'made-to-order': 'Під замовлення' } as Record<string, string>;
+---
+<Base title="Лінійки">
+  <div class="wrap">
+    <h1>Лінійки</h1>
+    <p class="muted">Моделі простіших форм — в наявності або під замовлення.</p>
+    <div class="grid">
+      {products.map((p) => (
+        <article class="card">
+          <img src={p.photo} alt={p.name} loading="lazy" />
+          <div class="body">
+            <h2 style="font-size:1.3rem;margin:0 0 .4rem">{p.name}</h2>
+            <p>{p.price}<br /><span class="muted">{avail[p.availability]} · {p.leadTime}</span></p>
+            <a class="btn" href={`/linijky/${p.id}/`}>Детальніше та запит</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</Base>

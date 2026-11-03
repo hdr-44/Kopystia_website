@@ -1,0 +1,5 @@
+[
+  { "id": "classic-fedora", "name": "Класична федора (ЗРАЗОК)", "price": "₴ 0 000", "availability": "in-stock", "leadTime": "Відправка за 2–3 дні", "photo": "/images/hats/bitmap-2.png", "description": "PLACEHOLDER: опис моделі." },
+  { "id": "porkpie", "name": "Порк-пай (ЗРАЗОК)", "price": "₴ 0 000", "availability": "made-to-order", "leadTime": "Виготовлення 3–4 тижні", "photo": "/images/hats/bitmap-3.png", "description": "PLACEHOLDER: опис моделі." },
+  { "id": "wide-brim", "name": "Широкі поля (ЗРАЗОК)", "price": "₴ 0 000", "availability": "made-to-order", "leadTime": "Виготовлення 4–6 тижнів", "photo": "/images/hats/bitmap-4.png", "description": "PLACEHOLDER: опис моделі." }
+]

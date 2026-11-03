@@ -1,0 +1,10 @@
+---
+import Base from '../../layouts/Base.astro';
+const posts = Object.values(import.meta.glob<{ frontmatter: { title: string; description: string }; url: string }>('./*.md', { eager: true }));
+---
+<Base title="Блог">
+  <div class="wrap">
+    <h1>Блог</h1>
+    {posts.map((p) => <article><h2><a href={p.url + '/'}>{p.frontmatter.title}</a></h2><p class="muted">{p.frontmatter.description}</p></article>)}
+  </div>
+</Base>

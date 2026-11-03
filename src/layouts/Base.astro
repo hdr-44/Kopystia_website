@@ -1,0 +1,76 @@
+---
+import '../styles/global.css';
+import nav from '../content/nav.json';
+import site from '../content/site.json';
+interface Props { title?: string; description?: string }
+const { title, description = site.tagline } = Astro.props;
+const path = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title ? `${title} — ${site.name}` : `${site.name} — кастомні капелюхи ручної роботи`}</title>
+  <meta name="description" content={description} />
+  <link rel="icon" href="/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ruslan+Display&display=swap&subset=cyrillic" rel="stylesheet" />
+</head>
+<body>
+  <a class="skip" href="#main">Перейти до вмісту</a>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a href="/" class="brand" aria-label="Kopytsia — головна"><img src="/logo.png" alt="" width="44" height="54" /><span>Kopytsia</span></a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="main-nav">Меню</button>
+      <nav id="main-nav" aria-label="Головне меню">
+        <ul>
+          {nav.map((n) => <li><a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n.label}</a></li>)}
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main"><slot /></main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <img src="/logo.png" alt="Kopytsia — Ukrainian made, handmade custom hats" width="140" height="172" />
+      <div>
+        <p><strong>Kopytsia</strong> — {site.tagline}</p>
+        <p><a href={`mailto:${site.email}`}>{site.email}</a> · <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a> <span class="muted">(заглушка)</span></p>
+        <ul class="socials">{site.socials.map((s) => <li><a href={s.url} rel="noopener">{s.name}</a></li>)}</ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const btn = document.querySelector<HTMLButtonElement>('.menu-btn')!;
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { btn.setAttribute('aria-expanded', 'false'); btn.focus(); }
+    });
+  </script>
+</body>
+</html>
+<style>
+  .site-header { border-bottom: 1px solid var(--line); position: sticky; top: 0; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(6px); z-index: 5; }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--text); font-family: var(--font-display); font-size: 1.3rem; }
+  .brand img { height: 44px; width: auto; }
+  nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  nav a { color: var(--text); text-decoration: none; padding: .3em 0; }
+  nav a:hover, nav a[aria-current='page'] { color: var(--accent); border-bottom: 1px solid var(--accent); }
+  .menu-btn { display: none; background: none; color: var(--text); border: 1px solid var(--line); border-radius: var(--radius); padding: .5em .9em; font: inherit; }
+  @media (max-width: 900px) {
+    .menu-btn { display: block; }
+    nav { display: none; width: 100%; }
+    .menu-btn[aria-expanded='true'] + nav { display: block; }
+    nav ul { flex-direction: column; gap: 0; padding-bottom: 1rem; }
+    nav a { display: block; padding: .7em 0; border-bottom: 1px solid var(--line); }
+  }
+  .site-footer { border-top: 1px solid var(--line); margin-top: 3rem; padding-block: 2rem; }
+  .site-footer .wrap { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+  .socials { list-style: none; padding: 0; display: flex; gap: 1rem; }
+</style>

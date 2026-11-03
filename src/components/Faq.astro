@@ -1,0 +1,13 @@
+---
+interface Props { items: { q: string; a: string }[]; title?: string }
+const { items, title = 'Часті питання' } = Astro.props;
+---
+<section class="faq">
+  <h2>{title}</h2>
+  {items.map((i) => <details><summary>{i.q}</summary><p set:html={i.a.replace('«Як вибрати розмір»', '<a href="/blog/yak-vybraty-rozmir/">«Як вибрати розмір»</a>')} /></details>)}
+</section>
+<style>
+  details { border-bottom: 1px solid var(--line); padding: .8rem 0; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { color: var(--muted); margin: .6rem 0 0; }
+</style>

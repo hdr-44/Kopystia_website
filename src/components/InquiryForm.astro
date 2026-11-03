@@ -1,0 +1,93 @@
+---
+import type { InquiryType } from '../lib/validate.ts';
+interface Props {
+  type: InquiryType;
+  id?: string;
+  item?: string;
+  itemOptions?: { value: string; label: string }[];
+  itemLabel?: string;
+  showImage?: boolean;
+  descriptionLabel?: string;
+  descriptionRequired?: boolean;
+  submitLabel?: string;
+}
+const {
+  type, id = `form-${type}`, item = '', itemOptions, itemLabel = 'Вибір',
+  showImage = false, descriptionLabel = 'Короткий опис', descriptionRequired = false,
+  submitLabel = 'Надіслати запит',
+} = Astro.props;
+---
+<form class="inquiry" id={id} data-inquiry action="/api/inquiry" method="post" enctype="multipart/form-data" novalidate>
+  <input type="hidden" name="type" value={type} />
+  {itemOptions ? (
+    <fieldset class="field">
+      <legend>{itemLabel}</legend>
+      <div class="choices">
+        {itemOptions.map((o, i) => <label class="choice"><input type="radio" name="item" value={o.value} checked={i === 0} /> {o.label}</label>)}
+      </div>
+    </fieldset>
+  ) : <input type="hidden" name="item" value={item} data-item />}
+  <div class="field"><label for={`${id}-name`}>Ім’я</label><input id={`${id}-name`} name="name" required maxlength="100" autocomplete="name" /><p class="err" data-err="name"></p></div>
+  <div class="field"><label for={`${id}-contact`}>Як з вами зв’язатися <span class="muted">(email, телефон, Instagram…)</span></label><input id={`${id}-contact`} name="contact" required maxlength="200" autocomplete="email" /><p class="err" data-err="contact"></p></div>
+  <div class="field"><label for={`${id}-description`}>{descriptionLabel}{!descriptionRequired && <span class="muted"> (необов’язково)</span>}</label><textarea id={`${id}-description`} name="description" rows="4" maxlength="3000" required={descriptionRequired}></textarea><p class="err" data-err="description"></p></div>
+  {showImage && <div class="field"><label for={`${id}-image`}>Фото-референс <span class="muted">(необов’язково, JPG/PNG/WebP до 5 МБ)</span></label><input id={`${id}-image`} type="file" name="image" accept="image/jpeg,image/png,image/webp" /><p class="err" data-err="image"></p></div>}
+  <div class="hp" aria-hidden="true"><label>Не заповнюйте <input name="website" tabindex="-1" autocomplete="off" /></label></div>
+  <slot />
+  <button class="btn" type="submit">{submitLabel}</button>
+  <p class="status" role="status" aria-live="polite"></p>
+</form>
+<style>
+  .inquiry { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem; max-width: 640px; }
+  .field { margin-bottom: 1rem; border: 0; padding: 0; }
+  label, legend { display: block; margin-bottom: .3rem; }
+  input:not([type=radio]), textarea { width: 100%; padding: .7em; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius); font: inherit; }
+  [aria-invalid='true'] { border-color: var(--error) !important; }
+  .choices { display: flex; gap: .8rem; flex-wrap: wrap; }
+  .choice { display: flex; gap: .4rem; align-items: center; border: 1px solid var(--line); padding: .5em 1em; border-radius: var(--radius); cursor: pointer; }
+  .err { color: var(--error); margin: .2rem 0 0; font-size: .9rem; min-height: 0; }
+  .err:empty { display: none; }
+  .hp { position: absolute; left: -9999px; }
+  .status { margin: .8rem 0 0; }
+  .status.ok { color: var(--accent); }
+  .status.bad { color: var(--error); }
+</style>
+<script>
+  for (const form of document.querySelectorAll<HTMLFormElement>('form[data-inquiry]')) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+      const status = form.querySelector<HTMLElement>('.status')!;
+      form.querySelectorAll('[data-err]').forEach((el) => (el.textContent = ''));
+      form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+      status.className = 'status';
+      status.textContent = 'Надсилаємо…';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+        const data = await res.json().catch(() => ({ ok: false, errors: { form: 'Помилка сервера.' } }));
+        if (data.ok) {
+          form.reset();
+          status.className = 'status ok';
+          status.textContent = 'Дякуємо! Запит надіслано — ми відповімо електронною поштою або обраним способом.';
+          return;
+        }
+        // Keep everything the visitor entered; only mark the problems.
+        let first: HTMLElement | null = null;
+        for (const [k, msg] of Object.entries<string>(data.errors ?? {})) {
+          const slot = form.querySelector(`[data-err="${k}"]`);
+          const input = form.querySelector<HTMLElement>(`[name="${k}"]`);
+          if (slot) slot.textContent = msg;
+          if (input) { input.setAttribute('aria-invalid', 'true'); first ??= input; }
+        }
+        status.className = 'status bad';
+        status.textContent = data.errors?.form ?? 'Перевірте позначені поля.';
+        first?.focus();
+      } catch {
+        status.className = 'status bad';
+        status.textContent = 'Немає з’єднання. Ваші дані збережено у формі — спробуйте ще раз.';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  }
+</script>

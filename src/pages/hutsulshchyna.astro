@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+import gallery from '../content/gallery.json';
+---
+<Base title="Гуцульщина — Баршівка">
+  <div class="wrap">
+    <h1>Гуцульщина</h1>
+    <p class="placeholder-note">PLACEHOLDER: затверджений текст про Баршівку чекає від власника.</p>
+    <h2>Баршівка — гуцульський рогатий капелюх</h2>
+    <p>PLACEHOLDER: історія Баршівки.</p>
+    <div class="grid">{gallery.hutsul.map((f) => <img class="card" src={`/images/hutsul/${f}`} alt="Гуцульщина" loading="lazy" />)}</div>
+    <div class="two">
+      <div><h2>Замовити Баршівку</h2><InquiryForm type="hutsul-hat" id="form-barshivka" item="Баршівка" descriptionLabel="Розмір або побажання" /></div>
+      <div><h2>Книга про Баршівку</h2><p class="muted">PLACEHOLDER: опис книги.</p><InquiryForm type="book" id="form-book" item="Книга про Баршівку" descriptionLabel="Кількість або питання" submitLabel="Запитати про книгу" /></div>
+    </div>
+  </div>
+</Base>
+<style>.two { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; } .grid img { aspect-ratio: 1; object-fit: cover; } @media (max-width: 900px) { .two { grid-template-columns: 1fr; } }</style>

@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import InquiryForm from '../../components/InquiryForm.astro';
+import products from '../../content/products.json';
+export const getStaticPaths = () => products.map((p) => ({ params: { id: p.id }, props: { p } }));
+const { p } = Astro.props;
+const avail = { 'in-stock': 'В наявності', 'made-to-order': 'Під замовлення' } as Record<string, string>;
+---
+<Base title={p.name}>
+  <div class="wrap product">
+    <img src={p.photo} alt={p.name} />
+    <div>
+      <p><a href="/linijky/">← Лінійки</a></p>
+      <h1>{p.name}</h1>
+      <p class="price">{p.price}</p>
+      <p>{avail[p.availability]} · {p.leadTime}</p>
+      <p class="muted">{p.description}</p>
+      <p>Гіди: <a href="/blog/yak-vybraty-rozmir/">Як вибрати розмір</a> · <a href="/blog/yak-dohliadaty/">Як доглядати за капелюхом</a></p>
+      <h2>Запит про модель</h2>
+      <InquiryForm type="product" item={p.name} descriptionLabel="Розмір, колір або питання" submitLabel="Запитати про модель" />
+    </div>
+  </div>
+</Base>
+<style>
+  .product { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; padding-top: 1.5rem; }
+  .product > img { border-radius: var(--radius); aspect-ratio: 4/5; object-fit: cover; position: sticky; top: 90px; }
+  .price { font-size: 1.5rem; color: var(--accent); }
+  @media (max-width: 760px) { .product { grid-template-columns: 1fr; } .product > img { position: static; } }
+</style>

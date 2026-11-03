@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import faq from '../content/faq.json';
+import products from '../content/products.json';
+import gallery from '../content/gallery.json';
+---
+<Base>
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <p class="eyebrow">Ukrainian made · Handmade custom hats</p>
+        <h1>Капелюх, зроблений саме для вас</h1>
+        <p class="lead">PLACEHOLDER: короткий вступ про бренд. Розкажіть ідею — ми створимо капелюх вручну.</p>
+        <a class="btn" href="/kastomnyi-kapeliukh/#zapyt">Замовити кастомний капелюх</a>
+        <p class="sub"><a href="/konstruktor/">Зібрати в 3D-конструкторі</a> · <a href="/prymirka/">Приміряти через камеру</a></p>
+      </div>
+      <img src={`/images/hats/${gallery.custom[0]}`} alt="Капелюх ручної роботи Kopytsia" width="480" height="600" />
+    </div>
+  </section>
+  <div class="wrap">
+    <section>
+      <h2>Лінійки</h2>
+      <div class="grid">
+        {products.map((p) => <a class="card" href={`/linijky/${p.id}/`} style="text-decoration:none;color:inherit"><img src={p.photo} alt={p.name} loading="lazy" /><div class="body"><h3>{p.name}</h3><p class="muted">{p.price} · {p.leadTime}</p></div></a>)}
+      </div>
+    </section>
+    <section class="split">
+      <div><h2>Гуцульщина</h2><p>PLACEHOLDER: тизер історії Баршівки — гуцульського рогатого капелюха.</p><a class="btn ghost" href="/hutsulshchyna/">Дізнатися більше</a></div>
+      <img src="/images/hutsul/bitmap.png" alt="Гуцульщина" loading="lazy" />
+    </section>
+    <section>
+      <h2>Подарункові сертифікати</h2>
+      <p>Електронні сертифікати на $200, $300 або $500. <a href="/bilshe/">Обрати сертифікат</a></p>
+    </section>
+    <Faq items={faq} />
+  </div>
+</Base>
+<style>
+  .hero { padding-block: 2rem 1rem; }
+  .hero-in, .split { display: grid; gap: 2rem; align-items: center; grid-template-columns: 1.2fr 1fr; }
+  .hero img, .split img { border-radius: var(--radius); aspect-ratio: 4/5; object-fit: cover; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .2em; color: var(--accent); font-size: .8rem; }
+  .lead { font-size: 1.15rem; color: var(--muted); }
+  .sub { margin-top: 1rem; }
+  @media (max-width: 760px) { .hero-in, .split { grid-template-columns: 1fr; } }
+</style>
