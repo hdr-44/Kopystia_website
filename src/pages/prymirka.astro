@@ -12,10 +12,23 @@ import tryon from '../content/tryon.json';
       <legend>Форма</legend>
       {tryon.hats.map((h, i) => <label class="opt"><input type="radio" name="hat" value={h.id} checked={i === 0} /> {h.label}</label>)}
     </fieldset>
+    <div class="tryon-main">
     <div class="stage" id="tryon-stage" hidden>
       <video id="tryon-video" playsinline muted></video>
       <canvas id="tryon-canvas"></canvas>
       <div class="loading" id="tryon-loading"><img src="/loader/kopytsia-loader.gif" alt="Завантаження примірки" /></div>
+    </div>
+    <fieldset class="fit" id="tryon-fit" hidden>
+      <legend>Підлаштувати</legend>
+      <label>Розмір <input type="range" name="size" min="0.85" max="1.15" step="0.01" value="1" /> <output>100%</output></label>
+      <label>Висота <input type="range" name="dy" min="-3" max="3" step="0.1" value="0" /> <output>0 см</output></label>
+      <label>Вперед / назад <input type="range" name="dz" min="-3" max="3" step="0.1" value="0" /> <output>0 см</output></label>
+      <label>Нахил <input type="range" name="tilt" min="-15" max="15" step="1" value="0" /> <output>0°</output></label>
+      <label>Розмір голови <input type="range" name="head" min="0.85" max="1.2" step="0.01" value="1" /> <output>100%</output></label>
+      <label data-debug hidden>Поворот <input type="range" name="yaw" min="-180" max="180" step="15" value="0" /> <output>0°</output></label>
+      <button class="btn ghost" type="button" id="tryon-fit-reset">Скинути</button>
+      <pre id="tryon-fit-json" hidden></pre>
+    </fieldset>
     </div>
     <p class="controls">
       <button class="btn" id="tryon-start" type="button">Увімкнути камеру</button>
@@ -32,12 +45,20 @@ import tryon from '../content/tryon.json';
   .hats { border: 1px solid var(--line); border-radius: var(--radius); display: flex; flex-wrap: wrap; gap: .5rem; }
   legend { color: var(--accent); padding: 0 .4rem; }
   .opt { display: flex; gap: .4rem; align-items: center; padding: .4em .8em; border: 1px solid var(--line); border-radius: var(--radius); }
-  .stage { position: relative; max-width: 720px; margin-top: 1rem; border-radius: var(--radius); overflow: hidden; background: #000; }
+  .tryon-main { display: grid; grid-template-columns: minmax(0, 720px) minmax(260px, 340px); gap: 1.2rem; align-items: start; margin-top: 1rem; }
+  @media (max-width: 900px) { .tryon-main { grid-template-columns: 1fr; } }
+  .stage { position: relative; border-radius: var(--radius); overflow: hidden; background: #000; }
   .stage video, .stage canvas { display: block; width: 100%; height: auto; transform: scaleX(-1); }
   .stage canvas { position: absolute; inset: 0; height: 100%; }
   .loading { position: absolute; inset: 0; display: grid; place-items: center; background: var(--bg); }
   .loading img { width: min(60%, 320px); }
   .status { color: var(--error); }
+  .fit { border: 1px solid var(--line); border-radius: var(--radius); margin: 0; display: grid; gap: .7rem; }
+  .fit label { display: grid; grid-template-columns: 1fr 3.5rem; align-items: center; gap: .2rem .6rem; }
+  .fit label input { grid-column: 1 / -1; grid-row: 2; }
+  .fit input { accent-color: var(--accent); width: 100%; }
+  .fit button { justify-self: start; }
+  .fit pre { background: var(--bg); padding: .6rem; overflow-x: auto; font-size: .85rem; margin: 0; }
   .credit { font-size: .85rem; }
 </style>
 <script>
