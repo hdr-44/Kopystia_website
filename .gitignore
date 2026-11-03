@@ -3,4 +3,3 @@ node_modules/
 dist/
 .env
 .playwright-mcp/
-.playwright-mcp/
