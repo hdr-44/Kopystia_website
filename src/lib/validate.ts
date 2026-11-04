@@ -1,6 +1,6 @@
 // Server-side validation of inquiry submissions. Pure function so it can be tested with node --test.
 export const TYPES = {
-  custom: 'Кастомний капелюх',
+  custom: 'Унікальний капелюх',
   configurator: 'Конструктор капелюха',
   product: 'Модель з лінійки',
   'hutsul-hat': 'Баршівка (капелюх)',

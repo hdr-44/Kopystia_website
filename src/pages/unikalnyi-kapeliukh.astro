@@ -5,20 +5,20 @@ import InquiryForm from '../components/InquiryForm.astro';
 import faq from '../content/custom-faq.json';
 import gallery from '../content/gallery.json';
 ---
-<Base title="Кастомний капелюх">
+<Base title="Унікальний капелюх">
   <div class="wrap">
-    <h1>Кастомний капелюх</h1>
-    <p class="muted">PLACEHOLDER: як працює кастомне замовлення.</p>
+    <h1>Унікальний капелюх</h1>
+    <p class="muted">PLACEHOLDER: як працює унікальне замовлення.</p>
     <div class="entry">
       <a class="btn ghost" href="/konstruktor/">3D-конструктор капелюха</a>
       <a class="btn ghost" href="/prymirka/">Віртуальна примірка</a>
     </div>
     <h2>Наші роботи</h2>
-    <div class="grid">{gallery.custom.map((f) => <img class="card" src={`/images/hats/${f}`} alt="Приклад кастомного капелюха Kopytsia" loading="lazy" />)}</div>
+    <div class="grid">{gallery.custom.map((f) => <img class="card" src={`/images/hats/${f}`} alt="Приклад унікального капелюха Kopytsia" loading="lazy" />)}</div>
     <h2 id="zapyt">Розкажіть про свій капелюх</h2>
     <p>Не знаєте розмір? Дивіться <a href="/blog/yak-vybraty-rozmir/">«Як вибрати розмір»</a>.</p>
     <InquiryForm type="custom" showImage descriptionRequired descriptionLabel="Опишіть ідею: форма, колір, нагода" />
-    <Faq items={faq} title="Питання про кастомне замовлення" />
+    <Faq items={faq} title="Питання про унікальне замовлення" />
   </div>
 </Base>
 <style>.entry { display: flex; gap: 1rem; flex-wrap: wrap; } .grid img { aspect-ratio: 4/5; object-fit: cover; }</style>

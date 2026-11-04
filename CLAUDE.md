@@ -4,11 +4,11 @@ Kopytsia makes hats. The site’s primary job is to start a conversation about a
 
 ## Launch scope
 
-The homepage’s primary call to action is **«Замовити кастомний капелюх»**. It leads to the custom section with examples and a short inquiry form.
+The homepage’s primary call to action is **«Замовити унікальний капелюх»**. It leads to the custom section with examples and a short inquiry form.
 
 | Main menu | Content and actions |
 | --- | --- |
-| **Кастомний капелюх** | Gallery of past work, inquiry form, and custom-order FAQs. Provide clear entry points to the 3D configurator and camera try-on. |
+| **Унікальний капелюх** | Gallery of past work, inquiry form, and custom-order FAQs. Provide clear entry points to the 3D configurator and camera try-on. |
 | **Лінійки** | Orderable designs with simpler shapes and clearer designs. Support both in-stock and made-to-order models. Show price, availability, and lead time for each. Provide a model-specific inquiry action. |
 | **Гуцульщина** | Tell the story of Баршівка, the Hutsul horned hat. Provide separate inquiry actions for the hat and the book. |
 | **Більше** | Launch with electronic gift certificates in three fixed denominations ($200, $300, $500). Let visitors select a denomination and submit an inquiry. Allow more products to be added later. |
